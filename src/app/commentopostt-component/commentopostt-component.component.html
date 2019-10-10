@@ -1,0 +1,49 @@
+<tr>
+    <td>
+        <img class="img img-responsive" style="max-width: 80px"
+            src="http://localhost:57761/upload/{{this.allcisstudent[comment.studentId].studentImage|imagemaintance}}">
+    </td>
+    <td>
+        <h5>{{this.allcisstudent[comment.studentId].studentName}}</h5>
+    </td>
+</tr>
+<tr>
+    <td>
+        <time>{{comment.time|date}}</time>
+        <div [innerHtml]="comment.comment"></div>
+    </td>
+</tr>
+<tr>
+
+    <td>
+        
+        <button (click)="showresponsetocomment(comment.id)"  type="button" >
+            numberofresponse
+        </button>
+    </td>
+    <td class="">
+        <a href="{{responsetocommenthref+comment.id}}">Response</a>
+    </td>
+</tr>
+<tr>
+    <div *ngIf="comment.id==responsecommenttoshow" >
+      <dialog  id="containtresponse" style="z-index: 1; overflow:scroll;max-height:600px;min-width: 500px;">
+      <button (click)="closedialog()"  id="closecontaintresponse" class="btn btn-danger " style="float: right"  >Close</button>
+          <div *ngFor="let responsetocomment of allresponsecomment">
+               
+              <app-responseforcomment [Id]="this.Id" [responsetocomment]="responsetocomment"></app-responseforcomment>
+           
+           
+          </div>
+      </dialog>
+        
+           
+   
+   
+    </div>
+</tr>
+
+  
+
+
+    

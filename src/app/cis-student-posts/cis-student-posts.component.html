@@ -1,0 +1,36 @@
+
+<div class="card-header"><app-personal-data [currentstudent]="this.Id" [Id]="post.cisStudentId"></app-personal-data>{{post.title}} At {{post.dateTime|date}}</div>
+<div class="panel-body">
+    <div>{{post.technology}}</div>
+    <div [innerHtml]="post.postcontaint|safeHtml">
+
+    </div>
+</div>
+
+<div class="card-footer">
+    <table>
+        <tr>
+            <td class=""><a class="btn btn-primary" style="text-decoration: none"
+                    href="{{commenthref+post.id}}">Add Comment</a></td>
+            <td (click)="Show_Comments(post.id)" id="{{post.id}}" class="btn btn-danger">Show
+                Comments
+            </td>
+        </tr>
+    </table>
+    <div *ngIf="Show&&post.id==Show">
+        <div *ngIf="!allcomments">
+            load......
+        </div>
+        <div *ngIf="commentsisempty" class="alert alert-info">No Comments</div>
+        <div *ngFor="let comment of allcomments">
+                <table>
+                    <app-commentopostt-component [Id]="this.Id" [comment]="comment"></app-commentopostt-component>
+                </table>
+           
+
+
+
+        </div>
+
+    </div>
+</div>

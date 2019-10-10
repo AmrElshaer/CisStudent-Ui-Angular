@@ -1,0 +1,86 @@
+<div class="container" >
+
+    <div class="row">
+
+        <div class="col-sm-3" *ngIf="Haveprofile">
+            <app-cis-student-profile-component [CisStudentProfile]="CisStudentProfile">
+            </app-cis-student-profile-component>
+        </div>
+
+        <div class="col-sm-5">
+
+            <div class="row">
+                <div class="card col-sm-12 card-default " *ngFor="let post of Posts;">
+
+                   <app-cis-student-posts [Id]="this.Id" [post]="post"></app-cis-student-posts>
+
+
+                 </div>
+
+            </div>
+
+
+
+        </div>
+
+   <div class="col-sm-4" *ngIf="StudentAsVisited==null">
+
+    <button  *ngIf="!Haveprofile" class="btn btn-info btn-block">
+        <a [routerLink]="['/AddProfile/'+Id]">AddProfile </a> </button> <button style="background-color: white" class="btn btn-info btn-block"><a
+                [routerLink]="['/Updateprofile/'+Id]">Update Profile</a>
+    </button>
+    <button class="btn btn-info btn-block" style="background-color: white"><a [routerLink]="['/AddPosts/'+Id]">Add Posts</a></button>
+    <button class="btn btn-info btn-block" style="background-color: white"><a [routerLink]="['/PrivatePosts/'+Id]">Private Posts</a></button>
+    <button class="btn btn-info btn-block" style="background-color: white"><a [routerLink]="['/Publicpost/'+Id]">Public Posts</a></button>
+    <button class="btn btn-info btn-block" style="background-color: white"> <a [routerLink]="['/AllFrieds/'+Id]">All Friends</a></button>
+    <button class="btn btn-info btn-block" style="background-color: white"> <a [routerLink]="['/Training/'+Id]">Training</a></button>
+    <button class="btn btn-info btn-block" style="background-color: white"> <a [routerLink]="['/Jobs/'+Id]">Jobs</a></button>
+    
+    <ul style="list-style: none">
+        <li class="nav-item dropdown" (click)="AllNotification()">
+        <a  class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Notification
+        </a>
+        <div  class="dropdown-menu" aria-labelledby="navbarDropdown"  style="min-width: 400px; max-height:500px;overflow:scroll;">
+            <div *ngIf="AllFollows" >
+  <div  *ngFor="let i of AllFollows" class="row">
+    <div class="col-sm-6">
+            <app-personal-data [Id]="i.sender" [currentstudent]="i.recever"></app-personal-data>
+    </div>
+
+           <div class="col-sm-2">
+               
+                <button *ngIf="i.accept=='false'" class="btn btn-success"  (click)="accept(i)">Accept</button>
+                <button *ngIf="i.accept=='true'" class="btn btn-success" (click)="unaccept(i)">Unaccept</button>
+           </div>
+           
+    <hr>
+            
+      
+            
+     
+
+             
+         </div>
+            </div>
+       <div *ngIf="allacceptablefollows" class="row">
+           <div *ngFor="let acceptable of allacceptablefollows" class="col-sm-6">
+            <app-personal-data [Id]="acceptable.recever" [currentstudent]="acceptable.sender"></app-personal-data>
+           </div>
+<div class="col-sm-4">
+Accepted follow
+</div>
+
+
+       </div>
+        </div>
+      </li>
+   
+    </ul>
+    
+   </div>
+   <div class="col-sm-2" *ngIf="StudentAsVisited!=null">
+    <button class="btn btn-success btn-block"><a style="color:white" (click)="follow()">{{FollowText}}</a></button>
+   </div>
+</div>
+</div>

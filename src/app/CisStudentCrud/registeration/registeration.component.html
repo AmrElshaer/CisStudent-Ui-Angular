@@ -1,0 +1,22 @@
+<div class="container">
+
+    <form [formGroup]="StudentRegister" (ngSubmit)="Register(StudentRegister.value)" style="margin-top: 5%">
+        <div class="form-group row" >
+            <label class="label-control col-sm-4">StudentEmail</label>
+            <input formControlName="studentEmail" class="form-control col-sm-8" type="email" name="studentEmail">
+            <span *ngIf="StudentRegister.get('studentEmail').errors?.required&&StudentRegister.get('studentEmail').touched">StudentEmail Is Required</span>
+            <span *ngIf="StudentRegister.get('studentEmail').errors?.emailNot&&StudentRegister.get('studentEmail').touched">StudentEmail Is Exit </span>
+    
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">StudentPassword</label>
+            <input formControlName="password" class="form-control col-sm-8" type="password" name="password">
+            <span *ngIf="StudentRegister.get('password').errors?.required&&StudentRegister.get('password').touched">studentPassword Is Required</span>
+            
+    
+        </div>   
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+
+</div>
+

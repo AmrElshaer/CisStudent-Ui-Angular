@@ -1,0 +1,10 @@
+img{
+    max-width: 300px;
+}
+.card.card-default{
+padding: 0px;
+margin-bottom: 5%;
+}
+li{
+    word-break: break-all;
+}

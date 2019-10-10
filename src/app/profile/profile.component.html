@@ -1,0 +1,83 @@
+
+<div class="container">
+    <form [formGroup]='employeeform' (ngSubmit)='Save(employeeform.value)'>
+
+        <div class="form-group row">
+            <label class="label-control col-sm-4">Age</label>
+            <input formControlName="age" class="form-control col-sm-8" type="text" name="age">
+            <span *ngIf="employeeform.get('age').invalid&&employeeform.get('age').touched">age Is Required</span>
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">Country</label>
+            <input formControlName="country" class="form-control col-sm-8" type="text" name="country">
+            <span *ngIf="employeeform.get('country').invalid&&employeeform.get('country').touched">country Is Required</span>
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">Colleage</label>
+            <input formControlName="colleage" class="form-control col-sm-8" type="text" name="colleage">
+            <span *ngIf="employeeform.get('colleage').invalid&&employeeform.get('colleage').touched">colleage Is Required</span>
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">Language</label>
+            <input formControlName="language" class="form-control col-sm-8" type="text" name="language">
+            <span *ngIf="employeeform.get('language').errors?.required&&employeeform.get('language').touched">language Is Required</span>
+            <span *ngIf="employeeform.get('language').errors?.emailNot&&employeeform.get('language').touched">language Is Exit </span>
+
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">University</label>
+            <input formControlName="university" class="form-control col-sm-8" type="text" name="university">
+            <span *ngIf="employeeform.get('university').errors?.required&&employeeform.get('university').touched">university Is Required</span>
+            
+
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">Experience</label>
+            <input formControlName="experience"  class="form-control col-sm-8" type="text">
+          
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">program_Language</label>
+            <input formControlName="program_Language" class="form-control col-sm-8" type="text"/>
+           
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">Carear</label>
+            <input formControlName="carear" class="form-control col-sm-8" type="text"/>
+           
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">Appreciation</label>
+            <input formControlName="appreciation" class="form-control col-sm-8" type="text"/>
+           
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">Company_youWork</label>
+            <input formControlName="company_youWork" class="form-control col-sm-8" type="text"/>
+           
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">Addition</label>
+            <input formControlName="addition" class="form-control col-sm-8" type="text"/>
+           
+        </div>
+        <div class="form-group row" style="display: none" >
+            <label class="label-control col-sm-4">StudentId</label>
+
+<input formControlName="studentId"  class="form-control col-sm-8" type="text"/>
+           
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">Kind</label>
+            <select formControlName="kind" class="form-control col-sm-8" type="text">
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+
+                </select>
+           <!--fasdf-->
+        </div>
+       <button class="btn btn-primary">Save</button>
+    </form>
+</div>
+
+

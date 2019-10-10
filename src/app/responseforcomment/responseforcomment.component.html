@@ -1,0 +1,41 @@
+   <table>
+
+ 
+   <tr>
+        <td>
+            <img class="img img-responsive" style="max-width: 80px"
+                src="http://localhost:57761/upload/{{this.allcisstudent[responsetocomment.idofstudent].studentImage|imagemaintance}}">
+        </td>
+        <td>
+            <h5>{{this.allcisstudent[responsetocomment.idofstudent].studentName}}{{responsetocomment.time}}
+            </h5>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div [innerHtml]="responsetocomment.containt"></div>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <a href="{{responsetoresponsehref+responsetocomment.idof}}">Response</a>
+        </td>
+        <td (click)="allresponsetoresponsefun(responsetocomment.idof)">
+            Allresponse
+        </td>
+    </tr>
+    <hr>
+    <tr *ngIf="responsetoresponsetoshow&&responsetocomment.idof==responsetoresponsetoshow">
+    <div *ngFor="let responsetoresponseloop of allresponsetoresponse">
+
+     <app-responsetoresponse [Id]="this.Id" [responsetoresponseloop]="responsetoresponseloop"></app-responsetoresponse>
+
+
+      </div>
+
+
+      <hr>
+
+    </tr>
+</table>

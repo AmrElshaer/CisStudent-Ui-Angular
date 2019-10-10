@@ -1,0 +1,10 @@
+<div *ngIf="AllFriends" class="container " style="margin-top: 2%">
+    <div *ngFor="let i of AllFriends" style="border: 1px solid #c5bcbc61;
+    border-radius: 13%;
+    box-shadow: 1px 4px #c5bcbc61;margin-bottom: 2%">
+<app-personal-data [Id]="i.sender==Id?i.recever:i.sender" [currentstudent]="Id"></app-personal-data>
+    </div>
+        
+</div>
+
+

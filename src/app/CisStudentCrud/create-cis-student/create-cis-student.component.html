@@ -1,0 +1,38 @@
+
+<div class="container">
+    <form [formGroup]='employeeform' (ngSubmit)='Save(employeeform.value)'>
+
+        <div class="form-group row">
+            <label class="label-control col-sm-4">StudentName</label>
+            <input formControlName="StudentName" class="form-control col-sm-8" type="text" name="StudentName">
+            <span *ngIf="employeeform.get('StudentName').invalid&&employeeform.get('StudentName').touched">StudentName Is Required</span>
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">StudentEmail</label>
+            <input formControlName="studentEmail" class="form-control col-sm-8" type="email" name="studentEmail">
+            <span *ngIf="employeeform.get('studentEmail').errors?.required&&employeeform.get('studentEmail').touched">StudentEmail Is Required</span>
+            <span *ngIf="employeeform.get('studentEmail').errors?.emailNot&&employeeform.get('studentEmail').touched">StudentEmail Is Exit </span>
+
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">StudentPassword</label>
+            <input formControlName="password" class="form-control col-sm-8" type="password" name="password">
+            <span *ngIf="employeeform.get('password').errors?.required&&employeeform.get('password').touched">studentPassword Is Required</span>
+            
+
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">StudentImage</label>
+            <input formControlName="StudentImage" #file s class="form-control col-sm-8" type="file">
+           <button type="button"  (click)="saveimage(file.files)">upload</button>
+        </div>
+        <div class="form-group row">
+            <label class="label-control col-sm-4">StudentLevel</label>
+            <select formControlName="StudentLevel" class="form-control col-sm-8" type="text">
+          <option *ngFor='let i of StudentsLevel' [value]='i.Value'>{{i.Name}}</option>
+            </select>
+        </div>
+       <button class="btn btn-primary">Save</button>
+    </form>
+</div>
+{{employeeform.value|json}}

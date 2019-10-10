@@ -1,0 +1,17 @@
+<div class="container">
+    <div *ngIf="Cisstudent" class="row">
+        <div class="col-sm-8">
+                <img [src]="ImageHref+(Cisstudent.studentImage|imagemaintance)" class="img img-responsive img-circle " style="max-width: 80px;
+                border-radius: 50% 50%;
+                background-position: center;
+                background-size: cover;">
+        </div>
+        <div class="col-sm-4">
+                <a [routerLink]="['/HomePage/'+Cisstudent.id+'/AsVisited/'+currentstudent]">{{Cisstudent.studentName}}</a>
+        </div>
+        
+    </div>
+    </div>
+
+
+
