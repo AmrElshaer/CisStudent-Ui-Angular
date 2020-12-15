@@ -1,28 +1,28 @@
 <tr>
-    <td>
+    <td style="border: none;">
         <img class="img img-responsive" style="max-width: 80px"
             src="http://localhost:57761/upload/{{this.allcisstudent[comment.studentId].studentImage|imagemaintance}}">
     </td>
-    <td>
+    <td style="border: none;">
         <h5>{{this.allcisstudent[comment.studentId].studentName}}</h5>
     </td>
 </tr>
 <tr>
-    <td>
+    <td style="border: none;">
         <time>{{comment.time|date}}</time>
         <div [innerHtml]="comment.comment"></div>
     </td>
 </tr>
 <tr>
 
-    <td>
+    <td style="border: none;">
         
-        <button (click)="showresponsetocomment(comment.id)"  type="button" >
-            numberofresponse
+        <button (click)="showresponsetocomment(comment.id)" class="btn btn-dark" type="button" >
+           Response
         </button>
     </td>
-    <td class="">
-        <a href="{{responsetocommenthref+comment.id}}">Response</a>
+    <td style="border: none;">
+        <a href="{{responsetocommenthref+comment.id}}">Responses</a>
     </td>
 </tr>
 <tr>

@@ -35,12 +35,10 @@ this.stdServices.AllCisSTudent().subscribe(a=>{
   window.localStorage.setItem("Image",imageurl[imageurl.length-1]);
 
  }
- if(sessionStorage.getItem("ReturnUrl")){
-  location.href=sessionStorage.getItem("ReturnUrl");
-  }
-  else{
+ 
+
     location.href="/HomePage/"+studentimage.id;
-  }
+ 
   
 
   

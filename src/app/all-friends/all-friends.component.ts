@@ -16,6 +16,7 @@ Id:string;
    }
 
   ngOnInit() {
+   
     this._httpclient.paramMap.subscribe(a=>{
       this.Id=a.get("Id");
       this.followsservieces.AllFriends(this.Id).subscribe(a=>{

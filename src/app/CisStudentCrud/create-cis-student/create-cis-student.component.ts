@@ -34,9 +34,7 @@ window.localStorage.setItem("Authorize","true");
 
 var imageurl=CisStudent.StudentImage.split('\\');
 window.localStorage.setItem("Image",imageurl[imageurl.length-1]);
-if(sessionStorage.getItem("ReturnUrl")){
-location.href=sessionStorage.getItem("ReturnUrl");
-}
+
 var re=new Register();
 re.password=CisStudent.password;
 re.studentEmail=CisStudent.studentEmail;

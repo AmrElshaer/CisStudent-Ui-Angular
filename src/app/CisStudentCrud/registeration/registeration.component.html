@@ -1,22 +1,61 @@
-<div class="container">
 
-    <form [formGroup]="StudentRegister" (ngSubmit)="Register(StudentRegister.value)" style="margin-top: 5%">
-        <div class="form-group row" >
-            <label class="label-control col-sm-4">StudentEmail</label>
-            <input formControlName="studentEmail" class="form-control col-sm-8" type="email" name="studentEmail">
-            <span *ngIf="StudentRegister.get('studentEmail').errors?.required&&StudentRegister.get('studentEmail').touched">StudentEmail Is Required</span>
-            <span *ngIf="StudentRegister.get('studentEmail').errors?.emailNot&&StudentRegister.get('studentEmail').touched">StudentEmail Is Exit </span>
-    
+<!-- END header -->
+
+<section class="site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5"
+    style="background-image: url(./assets/images/big_image_1.jpg);">
+    <div class="container">
+        <div class="row align-items-center site-hero-inner justify-content-center">
+            <div class="col-md-8 text-center">
+
+                <div class="mb-5 element-animate fadeInUp element-animated">
+                  <h1>Login</h1>
+                </div>
+              </div>
         </div>
-        <div class="form-group row">
-            <label class="label-control col-sm-4">StudentPassword</label>
-            <input formControlName="password" class="form-control col-sm-8" type="password" name="password">
-            <span *ngIf="StudentRegister.get('password').errors?.required&&StudentRegister.get('password').touched">studentPassword Is Required</span>
-            
-    
-        </div>   
-        <button type="submit" class="btn btn-primary">Register</button>
-    </form>
+    </div>
+</section>
+<!-- END section -->
 
-</div>
 
+<section class="site-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5 box">
+                <h2 class="mb-5">Login</h2>
+                <form [formGroup]="StudentRegister" (ngSubmit)="Register(StudentRegister.value)">
+                    <div class="row">
+                        <div class="form-group col-md-12 ">
+                            <label class="label-control">StudentEmail</label>
+                            <input formControlName="studentEmail" class="form-control" type="email" name="studentEmail">
+                            <span
+                                *ngIf="StudentRegister.get('studentEmail').errors?.required&&StudentRegister.get('studentEmail').touched">StudentEmail
+                                Is Required</span>
+                            <span
+                                *ngIf="StudentRegister.get('studentEmail').errors?.emailNot&&StudentRegister.get('studentEmail').touched">StudentEmail
+                                Is Exit </span>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="label-control ">StudentPassword</label>
+                            <input formControlName="password" class="form-control " type="password" name="password">
+                            <span
+                                *ngIf="StudentRegister.get('password').errors?.required&&StudentRegister.get('password').touched">studentPassword
+                                Is Required</span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="submit" value="Login" class="btn btn-primary">
+                        </div>
+                    </div>
+
+                </form>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- END section -->

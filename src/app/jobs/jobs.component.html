@@ -1,65 +1,126 @@
-<div class="container">
-    <div class="row">   
-       <div class="col-sm-6">
-          <button class="btn btn-primary">All Publish Training</button>
-          <div *ngIf="AllPublishTraining">
-     <div *ngFor="let publishtraining of AllPublishTraining">
-          <div class="card-header"><app-personal-data [currentstudent]="this.Id" [Id]="publishtraining.sponser"></app-personal-data> At {{publishtraining.time|date}}</div>
-          <div class="card-body">
-              <div>{{publishtraining.technology}}</div>
-              <div [innerHtml]="publishtraining.containt|safeHtml">
-          
-              </div>
-              <div>{{publishtraining.place}}</div>
-             
-              <button class="btn btn-success"   style="color:white" (click)="controldisplay(publishtraining.id)" >Applay</button>
-              <div  [id]="publishtraining.id"  *ngIf="Applaytodisplay==publishtraining.id">
-                 <h3>You Must Have Approfile Before you Apply</h3>
-                 <div class="input-group mb-3">
-                   <div class="input-group-prepend">
-                         <button class="btn btn-outline-secondary" type="button" (click)="SendEmailtoApplay(publishtraining.id,publishtraining.sponser)">SendEmail</button>
-                   </div>
-                   <input type="text" class="form-control" [(ngModel)]="Email" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                 </div>
-                 <div [innerHtml]="statusofapplay"></div>
-                </div>
-          </div>
-    
+<section class=" mb-5 site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5"
+   style="background-image: url(./assets/images/big_image_1.jpg);">
+   <div class="container">
+      <div class="row align-items-center site-hero-inner justify-content-center">
+         <div class="col-md-8 text-center">
+            <div class="mb-5 element-animate fadeInUp element-animated">
+               <h1 class="mb-3">Jobs</h1>
+            </div>
+
          </div>
-          </div>
-        <div *ngIf="!AllPublishTraining">
-           NO Publish Trainging
-        </div>
-       </div>
-       <div class="col-sm-6">
-             <a class="btn btn-primary" [href]='CreateTraining' >AddJobs</a>
-            <div *ngIf="AllTraing">
-                <div *ngFor="let training of AllTraing">
-                      <div class="card-header"><app-personal-data [currentstudent]="this.Id" [Id]="training.sponser"></app-personal-data> At {{training.time|date}}</div>
-                      <div class="card-body">
-                          <div>{{training.technology}}</div>
-                          <div [innerHtml]="training.containt|safeHtml">
-                      
-                          </div>
-                      </div>
-                      <button (click)="AllApplies(training.id)" class="btn btn-success">AllApplies</button>
-                      <div *ngIf="IdofApplaytrainingforshow==training.id" class="card" style="margin-bottom: 2%;margin-top:2%">
-    <div *ngIf="Allapplayfortraining" class="card-header">
-    <div *ngFor="let allappliesforjob of Allapplayfortraining">
-       <app-personal-data [currentstudent]="this.Id" [Id]="allappliesforjob.studentApplay"></app-personal-data>
-       <div>Emil>>{{allappliesforjob.email}}</div>
-    </div>
-    </div>
-    <div *ngIf="Allapplayfortraining.length==0">
-    No AllApplies
-    </div>
-                      </div>
+      </div>
+   </div>
+</section>
+<div class="container">
+   <div class="row justify-content-center mb-5">
+      <div class="col-md-12 text-center">
+         <h2>Jobs You Publish</h2>
+         <p class="lead"> <a class="btn btn-primary" [href]='CreateTraining'>AddJobs</a></p>
+      </div>
+   </div>
+</div>
+
+<div class="container">
+   <div class="row mb-5 mt-5">
+      <div *ngIf="AllTraing">
+         <div class="col-auto ">
+            <div *ngFor="let training of AllTraing" class="card mb-5 mt-5">
+               <div>
+                  <div class="card-header">
+                     <app-personal-data [currentstudent]="this.Id" [Id]="training.sponser"></app-personal-data> At
+                     {{training.time|date}}
+                  </div>
+                  <div class="card-body">
+                     <div>{{training.technology}}</div>
+                     <div [innerHtml]="training.containt|safeHtml"></div>
+                  </div>
+                  <button (click)="AllApplies(training.id)" class="btn btn-dark">AllApplies</button>
+                  <div *ngIf="IdofApplaytrainingforshow==training.id" class="card"
+                     style="margin-bottom: 2%;margin-top:2%">
+                     <div *ngIf="Allapplayfortraining" class="card-header">
+                        <div *ngFor="let allappliesforjob of Allapplayfortraining">
+                           <app-personal-data [currentstudent]="this.Id" [Id]="allappliesforjob.studentApplay">
+                           </app-personal-data>
+                           <div>Email <p>{{allappliesforjob.email}}</p>
                            </div>
+                        </div>
+                     </div>
+                     <div *ngIf="Allapplayfortraining.length==0">
+                        No Applies
+                     </div>
+                  </div>
+
+               </div>
             </div>
-            <div *ngIf="!AllTraing">
-    NO Training
+         </div>
+
+
+      </div>
+
+   </div>
+   <div *ngIf="!AllTraing" class="row  mt-5 justify-content-center mb-5">
+      <div class="col-md-12 text-center">
+         <h5>No Jobs You Add Publish</h5>
+
+      </div>
+   </div>
+   <div class="row justify-content-center  mt-5 mb-5">
+      <div class="col-md-12 text-center">
+         <h2>All Jobs Publish</h2>
+
+      </div>
+   </div>
+   <div class="row mb-5 mt-5">
+
+
+      <div *ngIf="AllPublishTraining">
+         <div *ngFor="let publishtraining of AllPublishTraining">
+            <div class="col-auto mb-5 mt-5">
+               <div class="card">
+                  <div class="card-header">
+                     <app-personal-data [currentstudent]="this.Id" [Id]="publishtraining.sponser"></app-personal-data>
+                     At
+                     {{publishtraining.time|date}}
+                  </div>
+                  <div class="card-body">
+                     <div>{{publishtraining.technology}}</div>
+                     <div [innerHtml]="publishtraining.containt|safeHtml">
+
+                     </div>
+                     <div>{{publishtraining.place}}</div>
+
+                     <button class="btn btn-success" style="color:white"
+                        (click)="controldisplay(publishtraining.id)">Applay</button>
+                     <div [id]="publishtraining.id" *ngIf="Applaytodisplay==publishtraining.id">
+                        <h3>You Must Have Approfile Before you Apply</h3>
+                        <div class="input-group mb-3">
+                           <div class="input-group-prepend">
+                              <button class="btn btn-outline-secondary" type="button"
+                                 (click)="SendEmailtoApplay(publishtraining.id,publishtraining.sponser)">SendEmail</button>
+                           </div>
+                           <input type="text" class="form-control" [(ngModel)]="Email" placeholder="Username"
+                              aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div [innerHtml]="statusofapplay"></div>
+                     </div>
+                  </div>
+               </div>
             </div>
-       </div>
-    </div>
-    </div>
+
+         </div>
+      </div>
+
+
+
+   </div>
+   <div *ngIf="!AllPublishTraining" class="row justify-content-center mb-5  mt-5">
+      <div class="col-md-12 text-center">
+         <h5> NO Publish Jobs</h5>
+
+      </div>
+   </div>
+
+</div>
+
+
     

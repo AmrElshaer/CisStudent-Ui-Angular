@@ -1,24 +1,24 @@
 <table>
 <tr>
-        <td>
+        <td style="border: none;">
             <img class="img img-responsive" style="max-width: 80px"
                 src="http://localhost:57761/upload/{{this.allcisstudent[responsetoresponseloop.idofstudent].studentImage|imagemaintance}}">
         </td>
-        <td>
+        <td style="border: none;">
             <h5>{{this.allcisstudent[responsetoresponseloop.idofstudent].studentName}}+{{responsetoresponseloop.time}}</h5>
         </td>
 </tr>
     <tr>
-        <td>
+        <td style="border: none;">
             <div [innerHtml]="responsetoresponseloop.containt"></div>
         </td>
     </tr>
     <tr>
-        <td>
+        <td style="border: none;">
             <a
                 href="{{responsetoresponsehref+responsetoresponseloop.id}}">Response</a>
         </td>
-        <td (click)="allresponsetoresponsefun(responsetoresponseloop.id)">
+        <td style="border: none;" (click)="allresponsetoresponsefun(responsetoresponseloop.id)">
             Allresponse
         </td>
         

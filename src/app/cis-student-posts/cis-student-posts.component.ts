@@ -12,7 +12,7 @@ import { StudentSercies } from '../Student.Services';
   encapsulation: ViewEncapsulation.None
 })
 export class CisStudentPostsComponent implements OnInit {
-@Input()
+   @Input()
    post:Posts;
    commentsisempty:boolean=false;
   allcisstudent:CisStudentResponse[];

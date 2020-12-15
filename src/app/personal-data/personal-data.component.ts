@@ -9,22 +9,22 @@ import { CisStudentResponse } from '../CIsSTudentResponse';
   styleUrls: ['./personal-data.component.css']
 })
 export class PersonalDataComponent implements OnInit {
-@Input()
-Id:string;
-ImageHref:string;
-@Input()
-currentstudent:string;
-Cisstudent:CisStudentResponse;
-  constructor(private personalservices:StudentSercies) { }
+  @Input()
+  Id: string;
+  ImageHref: string;
+  @Input()
+  currentstudent: string;
+  Cisstudent: CisStudentResponse;
+  constructor(private personalservices: StudentSercies) { }
 
   ngOnInit() {
-    console.log("ID of"+this.Id);
-    this.ImageHref="http://localhost:57761/upload/";
-if(this.Id){
-this.personalservices.getstudentbyid(this.Id).subscribe(a=>{
-this.Cisstudent=a;
-});
-}
+    console.log("ID of" + this.Id);
+    this.ImageHref = "http://localhost:57761/upload/";
+    if (this.Id) {
+      this.personalservices.getstudentbyid(this.Id).subscribe(a => {
+        this.Cisstudent = a;
+      });
+    }
   }
 
 }

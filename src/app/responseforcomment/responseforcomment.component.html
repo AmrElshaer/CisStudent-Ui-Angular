@@ -2,26 +2,26 @@
 
  
    <tr>
-        <td>
+        <td style="border: none;">
             <img class="img img-responsive" style="max-width: 80px"
                 src="http://localhost:57761/upload/{{this.allcisstudent[responsetocomment.idofstudent].studentImage|imagemaintance}}">
         </td>
-        <td>
+        <td style="border: none;">
             <h5>{{this.allcisstudent[responsetocomment.idofstudent].studentName}}{{responsetocomment.time}}
             </h5>
         </td>
     </tr>
     <tr>
-        <td>
+        <td style="border: none;">
             <div [innerHtml]="responsetocomment.containt"></div>
         </td>
     </tr>
 
     <tr>
-        <td>
+        <td style="border: none;">
             <a href="{{responsetoresponsehref+responsetocomment.idof}}">Response</a>
         </td>
-        <td (click)="allresponsetoresponsefun(responsetocomment.idof)">
+        <td style="border: none;" (click)="allresponsetoresponsefun(responsetocomment.idof)">
             Allresponse
         </td>
     </tr>

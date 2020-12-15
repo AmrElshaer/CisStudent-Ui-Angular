@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   Authorize: boolean;
   realsrcimage:string;
    myTest: any;
-
+  Id:string;
   constructor(private activaterouter:ActivatedRoute,private followusservice:followusservcies) {
   
     this.Image = window.localStorage.getItem("Image");
@@ -35,12 +35,15 @@ export class AppComponent implements OnInit {
   }
  
   ngOnInit(): void {
-   
+
+  
   }
+
   LogOut()
   {
-window.localStorage.clear();
-location.reload();
+    window.localStorage.clear();
+    sessionStorage.clear();
+    location.reload();
   }
  
   

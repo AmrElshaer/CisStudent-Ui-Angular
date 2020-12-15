@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output,EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StudentProfileSercies } from '../CisStudentProfileServices';
 import { CisStudentProfile } from '../CisStudentProfile';
@@ -14,6 +14,7 @@ import { respnsetoresponse } from '../responsetoresponse';
 import { Responsetoresponseservieces } from '../responsetoresponseservices';
 import { Followus } from '../Followus';
 import { followusservcies } from '../followusservcies';
+
 
 @Component({
   selector: 'app-student-page',
@@ -39,6 +40,7 @@ export class StudentPageComponent implements OnInit {
  test:string;
 AllFollows:Followus[];
 allacceptablefollows:Followus[];
+
   constructor(private followusservcie:followusservcies,private responsetoresponseservices:Responsetoresponseservieces,private responsetocommentservices:Responsetocommentservieces,private Cisstudentservces:StudentSercies,private _commentservices: CommentServces, private _ActivateRouter: ActivatedRoute, private profileservices: StudentProfileSercies, private Postservices: PostsServices) {
    
   }
@@ -47,17 +49,18 @@ allacceptablefollows:Followus[];
    this.FollowText="Follow";
     this._ActivateRouter.paramMap.subscribe(a => {
       this.Id = a.get('Id');
-
+   
       this.StudentAsVisited=a.get('AsVisited');
       this.commenthref = "http://localhost:57761/Comments/Create?studentId="+this.Id+"&postId=";
       
       this.profileservices.getstudentbyid(this.Id).subscribe(a => {
         if (a != null) {
-          console.log(a);
+          console.log(" Have Profile");
           this.Haveprofile = true;
           this.CisStudentProfile = a;
         }
         else {
+          console.log("Not Have Profile");
           this.Haveprofile = false;
           this.CisStudentProfile = null;
         }
@@ -98,7 +101,7 @@ this.FollowText="UnFollow";
 
   }
   AllNotification(){
-   
+   console.log("All Notification");
     this._ActivateRouter.paramMap.subscribe(a=>{
       this.Id=a.get("Id");
       console.log("follow"+this.Id);
@@ -117,7 +120,7 @@ this.FollowText="UnFollow";
   }
   getrightimage(image:string):string{
 
-return image;
+     return image;
   }
  
   follow(){
@@ -129,9 +132,7 @@ return image;
         follow.sender=a.get("currentstudent");
         this.followusservcie.AddStudent(follow);
         this.FollowText="UnFollow";
-        for(var item of this.AllFollowus){
-console.log(item.id);
-        }
+        
        });
     }
    else{
@@ -147,7 +148,7 @@ console.log(item.id);
         this.FollowText="Follow";
      var idtodeletefollow=this.AllFollowus.find(a=>a.recever==recever&&a.sender==sender).id;
      
-     this.followusservcie.Deletefollow(idtodeletefollow);
+       this.followusservcie.Deletefollow(idtodeletefollow);
        });
     
     
@@ -166,4 +167,5 @@ this.test="Now Your Are Friend"
     this.followusservcie.updateStudent(objfollow.id,objfollow);
  this.test="Now No Friend"
    }
+ 
 }

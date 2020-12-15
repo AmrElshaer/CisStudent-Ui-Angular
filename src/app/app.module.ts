@@ -33,6 +33,7 @@ import { ApplyTrainingServices } from './ApplyTrainingServces';
 import { JobsComponent } from './jobs/jobs.component';
 import { ApplyJobServices } from './ApplyJobServces';
 import { JobsServeces } from './JobsServeces';
+import { PersonalDataFroAllFrientComponent } from './personal-data-fro-all-frient/personal-data-fro-all-frient.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { JobsServeces } from './JobsServeces';
     PrivatePostsComponent,
     Safe,
     TrainingComponent,
-    JobsComponent
+    JobsComponent,
+    PersonalDataFroAllFrientComponent
 
   ],
   imports: [
