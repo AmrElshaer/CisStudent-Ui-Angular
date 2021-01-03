@@ -1,3 +1,3 @@
 export abstract class BaseRepository {
-  protected baseUrl = 'http://localhost:57761/api';
+  protected baseUrl = 'http://localhost:5000/api';
 }

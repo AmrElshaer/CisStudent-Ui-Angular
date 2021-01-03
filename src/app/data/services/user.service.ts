@@ -35,7 +35,7 @@ export class UserService  extends UserRepository  {
     }));
   }
   isLoggedIn(): boolean {
-    const token = localStorage.getItem('authtoken');
+    const token = localStorage.getItem('auth_token');
     if (token) {return true; }
     return false;
 

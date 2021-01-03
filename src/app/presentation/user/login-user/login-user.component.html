@@ -21,8 +21,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5 box">
-                <h2 class="mb-5">Login</h2>
+                
                 <form [formGroup]="userLogin" (ngSubmit)="login(userLogin.value)">
+                    <app-error [errors]="errors"></app-error>
                     <div class="row">
                         <div class="form-group col-md-12 ">
                             <label class="label-control">Email</label>
@@ -45,7 +46,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <input type="submit" value="Sign in" class="btn btn-primary">
+                            <input [disabled]="!userLogin.valid" type="submit" value="Sign in" class="btn btn-primary">
                         </div>
                     </div>
 
