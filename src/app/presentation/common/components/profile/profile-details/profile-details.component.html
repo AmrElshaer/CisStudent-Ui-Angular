@@ -1,0 +1,22 @@
+
+
+<div class="sidebar-box" >
+  <div class="categories">
+       <li><img [src]="userImage" class="img" style="max-width: 200px;"></li>
+       <li><a routerLink="/Profile" class="btn btn-light">Profile</a></li>
+  <div class="categories" *ngIf="profile">
+   
+    <li> <h4>{{profile.university}}</h4><br>
+      <span>{{profile.colleage}}</span><br>
+      <span>{{profile.carear}}</span><br>
+    </li>
+    <li>City <span>{{profile.city}}</span></li>
+    <li>Appreciation <span>{{profile.appreciation}}</span></li>
+    <li><span>{{profile.programing_Language}}</span></li>
+    <li>
+      {{profile.addition}}
+    </li>
+  </div>
+  </div>
+
+</div>

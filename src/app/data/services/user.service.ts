@@ -2,16 +2,23 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { User } from 'src/app/core/domain/user';
 import { UserRepository } from 'src/app/core/repositories/user-repository';
-
+import jwt_decode from '../../../../node_modules/jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService  extends UserRepository  {
-
+   authKey = 'auth_token';
   constructor(private http: HttpClient) {
     super();
-
+  }
+  getUser(): User {
+    const token = localStorage.getItem(this.authKey);
+    const decoded: User = jwt_decode(token);
+    const image = localStorage.getItem('image');
+    decoded.image = image;
+    return decoded;
   }
   register(email: string, password: string, name: string, image: string): Observable<void> {
     const url = `${this.baseUrl}/Account/Register`;
@@ -30,16 +37,15 @@ export class UserService  extends UserRepository  {
       Email: email,
       Password: password,
     };
-    return this.http.post<{token}>(url, body).pipe(map(result => {
-      localStorage.setItem('auth_token', result.token);
+    return this.http.post<{token, image}>(url, body).pipe(map(result => {
+      localStorage.setItem('image', result.image);
+      localStorage.setItem(this.authKey, result.token);
     }));
   }
   isLoggedIn(): boolean {
-    const token = localStorage.getItem('auth_token');
+    const token=localStorage.getItem(this.authKey);
     if (token) {return true; }
     return false;
-
-
   }
 
 }

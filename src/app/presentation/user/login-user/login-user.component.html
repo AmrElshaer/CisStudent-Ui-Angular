@@ -1,5 +1,4 @@
-
-<!-- END header -->
+<app-header></app-header>
 
 <section class="site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5"
     style="background-image: url(./assets/images/big_image_1.jpg);">
@@ -21,7 +20,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5 box">
-                
+
                 <form [formGroup]="userLogin" (ngSubmit)="login(userLogin.value)">
                     <app-error [errors]="errors"></app-error>
                     <div class="row">

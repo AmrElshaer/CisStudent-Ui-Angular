@@ -1,3 +1,4 @@
+import { ProfileService } from 'src/app/data/services/profile.service';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -22,7 +23,7 @@ import { AuthGuard } from './presentation/common/guard/auth.guard';
     PresentationModule,
     AppRoutingModule
   ],
-  providers: [AuthGuard,UserService],
+  providers: [AuthGuard, UserService, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
