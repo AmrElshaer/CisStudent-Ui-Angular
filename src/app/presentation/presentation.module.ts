@@ -1,3 +1,4 @@
+import { PostRoutingModule } from './post/post-routing.module';
 import { RouterModule } from '@angular/router';
 import { ProfileRoutingModule } from './profile/profile-routing.module';
 import { HomeRoutingModule } from './home/home.routing.module';
@@ -13,14 +14,18 @@ import { CreateProfileComponent } from './profile/create-profile/create-profile.
 import { ProfileDetailsComponent } from './common/components/profile/profile-details/profile-details.component';
 import { HeaderComponent } from './common/components/header/header.component';
 import { SidebarComponent } from './common/components/sidebar/sidebar.component';
+import { CreatePostComponent } from './post/create-post/create-post.component';
+import { AllPostsComponent } from './post/all-posts/all-posts.component';
 @NgModule({
-  declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent, ErrorComponent, CreateProfileComponent, ProfileDetailsComponent, HeaderComponent, SidebarComponent],
+  declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
+    ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
+    HeaderComponent, SidebarComponent, CreatePostComponent, AllPostsComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule
   ],
-  exports: [UserRoutingModule, HomeRoutingModule, ProfileRoutingModule,HeaderComponent]
+  exports: [UserRoutingModule, HomeRoutingModule, ProfileRoutingModule, HeaderComponent, PostRoutingModule]
 })
 export class PresentationModule { }
