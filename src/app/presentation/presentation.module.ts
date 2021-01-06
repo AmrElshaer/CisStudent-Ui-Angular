@@ -16,10 +16,11 @@ import { HeaderComponent } from './common/components/header/header.component';
 import { SidebarComponent } from './common/components/sidebar/sidebar.component';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { AllPostsComponent } from './post/all-posts/all-posts.component';
+import { PostDetailsComponent } from './post/post-details/post-details.component';
 @NgModule({
   declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
-    HeaderComponent, SidebarComponent, CreatePostComponent, AllPostsComponent],
+    HeaderComponent, SidebarComponent, CreatePostComponent, AllPostsComponent, PostDetailsComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

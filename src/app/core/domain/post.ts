@@ -1,9 +1,9 @@
+import { User } from 'src/app/core/domain/user';
 export interface Post {
    id: number;
    title: string;
-   technology: string;
    content: string;
-    isPrivate: boolean;
     createDate: Date;
     cisStudentId: number;
+    cisStudent: User;
 }
