@@ -1,3 +1,5 @@
+import { MailPipe } from './common/pipes/mail.pipe';
+import { JobRoutingModule } from './job/job-routing.module';
 import { AllTrainingComponent } from './training/all-training/all-training.component';
 import { CreateTrainingComponent } from './training/create-training/create-training.component';
 import { TrainingRoutingModule } from './training/training-routing.module';
@@ -21,11 +23,15 @@ import { CreatePostComponent } from './post/create-post/create-post.component';
 import { AllPostsComponent } from './post/all-posts/all-posts.component';
 import { PostDetailsComponent } from './post/post-details/post-details.component';
 import { TrainingDetailsComponent } from './training/training-details/training-details.component';
+import { AllJobsComponent } from './job/all-jobs/all-jobs.component';
+import { CreateJobComponent } from './job/create-job/create-job.component';
+import { JobDetailsComponent } from './job/job-details/job-details.component';
 @NgModule({
   declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
     HeaderComponent, SidebarComponent, CreatePostComponent, AllPostsComponent, PostDetailsComponent,
-    CreateTrainingComponent, TrainingDetailsComponent, AllTrainingComponent]
+    CreateTrainingComponent, TrainingDetailsComponent, AllTrainingComponent,
+     AllJobsComponent, CreateJobComponent, JobDetailsComponent,MailPipe]
     ,
   imports: [
     CommonModule,
@@ -33,6 +39,7 @@ import { TrainingDetailsComponent } from './training/training-details/training-d
     FormsModule,
     RouterModule
   ],
-  exports: [UserRoutingModule, HomeRoutingModule, ProfileRoutingModule, HeaderComponent, PostRoutingModule, TrainingRoutingModule]
+  exports: [UserRoutingModule, HomeRoutingModule, ProfileRoutingModule, HeaderComponent,
+                 PostRoutingModule, TrainingRoutingModule, JobRoutingModule]
 })
 export class PresentationModule { }

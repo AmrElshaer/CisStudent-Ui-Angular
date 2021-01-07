@@ -1,3 +1,5 @@
+import { TrainingService } from './data/services/training.service';
+import { JobService } from 'src/app/data/services/job.service';
 import { PostService } from './data/services/post.service';
 import { ProfileService } from 'src/app/data/services/profile.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +26,7 @@ import { AuthGuard } from './presentation/common/guard/auth.guard';
     PresentationModule,
     AppRoutingModule
   ],
-  providers: [AuthGuard, UserService, ProfileService,PostService],
+  providers: [AuthGuard, UserService, ProfileService,PostService,JobService,TrainingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
