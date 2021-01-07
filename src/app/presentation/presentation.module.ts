@@ -1,3 +1,6 @@
+import { AllTrainingComponent } from './training/all-training/all-training.component';
+import { CreateTrainingComponent } from './training/create-training/create-training.component';
+import { TrainingRoutingModule } from './training/training-routing.module';
 import { PostRoutingModule } from './post/post-routing.module';
 import { RouterModule } from '@angular/router';
 import { ProfileRoutingModule } from './profile/profile-routing.module';
@@ -17,16 +20,19 @@ import { SidebarComponent } from './common/components/sidebar/sidebar.component'
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { AllPostsComponent } from './post/all-posts/all-posts.component';
 import { PostDetailsComponent } from './post/post-details/post-details.component';
+import { TrainingDetailsComponent } from './training/training-details/training-details.component';
 @NgModule({
   declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
-    HeaderComponent, SidebarComponent, CreatePostComponent, AllPostsComponent, PostDetailsComponent],
+    HeaderComponent, SidebarComponent, CreatePostComponent, AllPostsComponent, PostDetailsComponent,
+    CreateTrainingComponent, TrainingDetailsComponent, AllTrainingComponent]
+    ,
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule
   ],
-  exports: [UserRoutingModule, HomeRoutingModule, ProfileRoutingModule, HeaderComponent, PostRoutingModule]
+  exports: [UserRoutingModule, HomeRoutingModule, ProfileRoutingModule, HeaderComponent, PostRoutingModule, TrainingRoutingModule]
 })
 export class PresentationModule { }
