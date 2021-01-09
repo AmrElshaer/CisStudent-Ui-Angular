@@ -20,8 +20,26 @@
      <div class="col-md-3 sidebar">
          <app-profile-details></app-profile-details>
       </div>
-      <div class="col-md-7 blog-content"  >
-      <h1>#Content</h1>
+      <div class="col-md-7">
+        <app-error [errors]="errors"></app-error>
+        <div *ngFor="let post of posts" class="card card-default" style="margin-top: 5%;">
+          <div class="text-white card-header">
+            <a [routerLink]="['/Profile/'+post.cisStudent.id]">
+                <img [src]="post.cisStudent.image" style="max-width:50px; margin-right: 15px;">
+                <span>{{post.cisStudent.name}}</span>
+            </a>
+
+          </div>
+          <div class="panel-body" style="padding: 5px;">
+            <div style="margin-top: 15px;margin-bottom: 15px;">
+                <h2>{{post.title}}  </h2><span>{{post.createDate|date}}</span>
+            </div>
+            <p>
+              {{post.content}}
+            </p>
+        </div>
+
+        </div>
       </div>
      <app-sidebar></app-sidebar>
     </div>

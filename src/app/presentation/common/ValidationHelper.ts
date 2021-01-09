@@ -8,6 +8,8 @@ export class  ValidationHelper {
           errors.push(validationErrorDictionary[fieldName]);
         }
       }
+    } else if (err.status === 401) {
+     errors.push('Session is expire please login');
     } else {
       errors.push('something went wrong!');
     }

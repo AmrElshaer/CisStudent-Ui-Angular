@@ -7,4 +7,5 @@ export abstract class PostRepository  extends BaseRepository {
    abstract GetPost(postId: number): Observable<Post>;
    abstract DeletePost(postId: number): Observable<void>;
    abstract GetPosts(studentId: number): Observable<Post[]>;
+   abstract GetStudentsPosts(): Observable<Post[]>;
 }

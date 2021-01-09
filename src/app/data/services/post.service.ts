@@ -10,9 +10,14 @@ import { PostRepository } from 'src/app/core/repositories/post-repository';
 export class PostService extends PostRepository {
 
 
+
   constructor(private http: HttpClient) {
     super();
 
+  }
+  GetStudentsPosts(): Observable<Post[]> {
+    const url = `${this.baseUrl}/Post/GetStudentsPosts`;
+    return this.http.get<Post[]>(url);
   }
   GetPosts(studentId: number): Observable<Post[]> {
     const url = `${this.baseUrl}/Post/GetAllPost?studentId=${studentId}`;
