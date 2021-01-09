@@ -26,12 +26,13 @@ import { TrainingDetailsComponent } from './training/training-details/training-d
 import { AllJobsComponent } from './job/all-jobs/all-jobs.component';
 import { CreateJobComponent } from './job/create-job/create-job.component';
 import { JobDetailsComponent } from './job/job-details/job-details.component';
+import { StudentProfileComponent } from './profile/student-profile/student-profile.component';
 @NgModule({
   declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
     HeaderComponent, SidebarComponent, CreatePostComponent, AllPostsComponent, PostDetailsComponent,
     CreateTrainingComponent, TrainingDetailsComponent, AllTrainingComponent,
-     AllJobsComponent, CreateJobComponent, JobDetailsComponent,MailPipe]
+     AllJobsComponent, CreateJobComponent, JobDetailsComponent,MailPipe, StudentProfileComponent]
     ,
   imports: [
     CommonModule,

@@ -1,3 +1,4 @@
+import { User } from 'src/app/core/domain/user';
 
 export interface Profile {
    id: number;
@@ -14,4 +15,5 @@ export interface Profile {
    cisStudentId: number;
    kind: string;
    city:string;
+   cisStudent:User
 }
