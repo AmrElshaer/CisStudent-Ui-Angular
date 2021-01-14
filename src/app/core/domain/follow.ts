@@ -1,9 +1,9 @@
 import { User } from 'src/app/core/domain/user';
-export interface follow {
+export interface Follow {
 
     id: number ;
     createDate: Date;
-    IsAccepte: boolean ;
+    isAccepte: boolean ;
     cisStudentSendId: number ;
     cisStudentSend: User ;
     cisStudentRecieveId: number ;

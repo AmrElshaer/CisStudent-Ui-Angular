@@ -17,8 +17,11 @@
           <div class="sidebar-box" >
           <div class="categories">
                 <li><img [src]="profile?.cisStudent.image" class="img" style="max-width: 200px;"></li>
-                <li><a *ngIf="studentId!==visitorId"  class="btn btn-light" (click)="follow()">Follow</a></li>
-                <li><a *ngIf="studentId===visitorId" routerLink="/Profile" class="btn btn-light">Profile</a></li>
+
+                <li *ngIf="studentId!==visitorId">
+                  <a  class="btn btn-light" (click)="FollowManage()">{{textFollow}}</a>
+                </li>
+                <li *ngIf="studentId===visitorId"><a  routerLink="/Profile" class="btn btn-light">Profile</a></li>
           <div class="categories" *ngIf="profile">
 
             <li> <h4>{{profile?.university}}</h4><br>
