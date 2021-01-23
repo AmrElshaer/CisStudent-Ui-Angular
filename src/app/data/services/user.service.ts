@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from 'src/app/core/domain/user';
@@ -10,7 +11,7 @@ import jwt_decode from '../../../../node_modules/jwt-decode';
 })
 export class UserService  extends UserRepository  {
    authKey = 'auth_token';
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     super();
   }
   getUser(): User {
@@ -31,16 +32,13 @@ export class UserService  extends UserRepository  {
     return this.http.post<void>(url, body);
 
   }
-  login(email: string, password: string): Observable<void> {
+  login(email: string, password: string): Observable<{token,image}> {
     const url = `${this.baseUrl}/Account/Login`;
     const body = {
       Email: email,
       Password: password,
     };
-    return this.http.post<{token, image}>(url, body).pipe(map(result => {
-      localStorage.setItem('image', result.image);
-      localStorage.setItem(this.authKey, result.token);
-    }));
+    return this.http.post<{token, image}>(url, body);
   }
   isLoggedIn(): boolean {
     const token=localStorage.getItem(this.authKey);

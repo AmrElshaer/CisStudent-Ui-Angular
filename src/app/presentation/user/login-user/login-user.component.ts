@@ -25,7 +25,11 @@ export class LoginUserComponent implements OnInit {
   }
 
   login(user) {
-    this.userService.login(user.email, user.password).subscribe( () => this.router.navigate(['/']),
+    this.userService.login(user.email, user.password).subscribe( (result) =>{
+      localStorage.setItem('image', result.image);
+      localStorage.setItem('auth_token', result.token);
+      this.router.navigate(['/']);
+    } ,
     err => this.errors = ValidationHelper.GetErrors(err)
     );
 

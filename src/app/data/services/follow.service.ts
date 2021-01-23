@@ -18,7 +18,7 @@ export class FollowService extends FollowRepository {
   }
 
   GetFollows(studentId: number): Observable<Follow[]> {
-    const url = `${this.baseUrl}/Follow/GetAllFollow?studentId=${studentId}`;
+    const url = `${this.baseUrl}/Follow/GetFollowers?id=${studentId}`;
     return this.http.get<Follow[]>(url, this.options);
   }
   UpSrtFollow(follow: Follow): Observable<number> {
