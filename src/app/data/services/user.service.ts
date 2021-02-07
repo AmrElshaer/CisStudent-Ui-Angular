@@ -32,7 +32,7 @@ export class UserService  extends UserRepository  {
     return this.http.post<void>(url, body);
 
   }
-  login(email: string, password: string): Observable<{token,image}> {
+  login(email: string, password: string): Observable<{token, image}> {
     const url = `${this.baseUrl}/Account/Login`;
     const body = {
       Email: email,
@@ -41,7 +41,7 @@ export class UserService  extends UserRepository  {
     return this.http.post<{token, image}>(url, body);
   }
   isLoggedIn(): boolean {
-    const token=localStorage.getItem(this.authKey);
+    const token = localStorage.getItem(this.authKey);
     if (token) {return true; }
     return false;
   }
