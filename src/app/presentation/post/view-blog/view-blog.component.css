@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+.profileImage
+{
+  max-width: 60px;
+  border-radius: 100px;
+  margin-top: 0.9em;
+  margin-bottom: 0.3em;
+}
+.blog,.blogComment
+{
+  background-color: #FFF;
+  padding: 3em 3em;
+  border-radius: 4px 4px 0 0;
+}
+.containerBlog{
+  text-align: center;
+  padding: 1.2em 2em;
+  background-color: #F1F1F1;
+  font-family: 'Montserrat',sans-serif;
+}
+.blogText,commentSection{
+  margin-top: 2em;
+  font-size: 0.9em;
+  line-height:1.6em;
+}
+.commentContainer{
+  padding: 1.2em 2em;
+  background-color: #F1F1F1;
+  font-family: 'Montserrat',sans-serif;
+}
+.replytoComment{
+   margin-left: 1.2em;
+}
+.addComment{
+  margin-top: 1.2em;
+}
+ul{
+  list-style-type: none;
+  display:flex;
+}
+ul li{
+  margin-left: 0.7em;
+}
+.commentHeader{
+  display: flex;
+  margin-bottom: 1.9em;
+}
+.personalImage{
+  width: 60px;
+  border-radius: 50%;
+}
+.reply{
+  margin-top: 1.2em;
+}
+.commenttoAdd{
+width: 100%;
+margin-bottom: 2em;
+}

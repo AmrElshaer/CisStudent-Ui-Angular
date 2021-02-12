@@ -29,12 +29,13 @@ import { CreateJobComponent } from './job/create-job/create-job.component';
 import { JobDetailsComponent } from './job/job-details/job-details.component';
 import { StudentProfileComponent } from './profile/student-profile/student-profile.component';
 import { AllFollowersComponent } from './Followers/all-followers/all-followers.component';
+import { ViewBlogComponent } from './post/view-blog/view-blog.component';
 @NgModule({
   declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
     HeaderComponent, SidebarComponent, CreatePostComponent, AllPostsComponent, PostDetailsComponent,
     CreateTrainingComponent, TrainingDetailsComponent, AllTrainingComponent,
-     AllJobsComponent, CreateJobComponent, JobDetailsComponent,MailPipe, StudentProfileComponent, AllFollowersComponent]
+     AllJobsComponent, CreateJobComponent, JobDetailsComponent,MailPipe, StudentProfileComponent, AllFollowersComponent, ViewBlogComponent]
     ,
   imports: [
     CommonModule,

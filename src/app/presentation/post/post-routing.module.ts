@@ -1,3 +1,4 @@
+import { ViewBlogComponent } from './view-blog/view-blog.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { AllPostsComponent } from './all-posts/all-posts.component';
 import { CreatePostComponent } from './create-post/create-post.component';
@@ -7,7 +8,8 @@ const routes: Routes = [
 {path: 'Blog/Create', component: CreatePostComponent},
 {path: 'Blog/All', component: AllPostsComponent},
 {path: 'Blog/Edit/:id', component: CreatePostComponent},
-{path: 'Blog/Delete/:id', component: PostDetailsComponent}
+{path: 'Blog/Delete/:id', component: PostDetailsComponent},
+{path:'Blog/ViewBlog/:id',component: ViewBlogComponent}
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
