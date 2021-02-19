@@ -8,8 +8,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/core/domain/post';
 import { PostService } from 'src/app/data/services/post.service';
 import { ValidationHelper } from '../../common/ValidationHelper';
-import { Console } from 'console';
-
 @Component({
   selector: 'app-view-blog',
   templateUrl: './view-blog.component.html',
@@ -46,6 +44,7 @@ export class ViewBlogComponent implements OnInit {
       comment.cisStudent = { name: user.name, image: user.image, id: user.id };
       comment.id = a;
       this.post.comments.push(comment);
+      this.commentGroup.reset({content:'Enter your comment'});
     });
 
   }

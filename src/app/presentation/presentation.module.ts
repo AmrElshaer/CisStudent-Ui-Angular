@@ -35,7 +35,8 @@ import { ViewBlogComponent } from './post/view-blog/view-blog.component';
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
     HeaderComponent, SidebarComponent, CreatePostComponent, AllPostsComponent, PostDetailsComponent,
     CreateTrainingComponent, TrainingDetailsComponent, AllTrainingComponent,
-     AllJobsComponent, CreateJobComponent, JobDetailsComponent,MailPipe, StudentProfileComponent, AllFollowersComponent, ViewBlogComponent]
+     AllJobsComponent, CreateJobComponent, JobDetailsComponent,MailPipe,
+      StudentProfileComponent, AllFollowersComponent, ViewBlogComponent]
     ,
   imports: [
     CommonModule,

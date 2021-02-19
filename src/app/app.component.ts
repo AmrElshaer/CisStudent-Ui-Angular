@@ -1,3 +1,4 @@
+import { LoaderService } from './data/services/loader.service';
 import { UserService } from './data/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';

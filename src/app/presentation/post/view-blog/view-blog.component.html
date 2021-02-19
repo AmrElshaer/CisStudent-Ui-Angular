@@ -1,4 +1,5 @@
 <app-header></app-header>
+
 <section class=" mb-5 site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5"
   style="background-image: url(./assets/images/big_image_1.jpg);">
   <div class="container">
@@ -81,7 +82,7 @@
         <li>
           <button type="reset" class="btn btn-danger">Cancel</button>
         </li>
-        <li><span class="btn btn-light">7 Comments</span></li>
+        <li><span class="btn btn-light">{{post.comments?.length}} Comments</span></li>
       </ul>
     </form>
   </div>
