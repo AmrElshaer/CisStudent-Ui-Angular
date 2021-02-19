@@ -15,13 +15,10 @@
 <div class="containerBlog">
   <div class="blog">
     <figure class="blogContent">
-      <h1 class="blogTitle">Title</h1>
-      <img src="./assets/images/big_image_1.jpg" class="profileImage">
-      <figcaption>2008-02-14</figcaption>
-      <blockquote class="blogText">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-        Sunt, facilis, minus repellendus blanditiis delectus nostrum odio sequi
-        officia optio rerum itaque possimus, voluptatem perspiciatis distinctio
-        voluptatum similique explicabo vitae. Voluptatum?</blockquote>
+      <h1 class="blogTitle">{{post.title}}</h1>
+      <img [src]="post.cisStudent.image" class="profileImage">
+      <figcaption>{{post.createDate|date}}</figcaption>
+      <blockquote class="blogText">{{post.content}}</blockquote>
     </figure>
   </div>
 
@@ -29,28 +26,27 @@
 <div class="commentContainer">
 
 
-  <div class="blogComment">
+  <div *ngFor="let comm of post.comments" class="blogComment">
 
 
-    <div class="comment">
+    <div  class="comment">
 
-      <div class="commentContent">
+      <div  class="commentContent">
         <div class="commentHeader">
-          <img class="personalImage" src="./assets/images/big_image_1.jpg">
+          <img class="personalImage" [src]="comm.cisStudent.image">
           <ul>
-            <li>Ruslan Fedosedko</li>
-            <li>February 5, 2021 2:14 am</li>
+            <li>{{comm.cisStudent.name}}</li>
+            <li>{{comm.createDate|date}}</li>
           </ul>
         </div>
         <section class="commentSection">
-          What do you mean by discoverable? As for me first thoughts when I read the post heading is that
-          some kind of service discovery will be discribed.
+         {{comm.content}}
         </section>
-        <button class="reply">Reply</button>
+        <button class="reply btn-info">Reply</button>
 
       </div>
     </div>
-    <hr>
+    <!-- <hr>
     <div class="replytoComment">
 
       <div class="comment">
@@ -72,18 +68,21 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="addComment blogComment">
-    <textarea class="commenttoAdd" rows="5"></textarea>
-    <ul>
-      <li>
-        <button>Submit</button>
-      </li>
-      <li>
-        <button>Cancel</button>
-      </li>
-      <li>7 Comments</li>
-    </ul>
+    <form role="form" [formGroup]='commentGroup' (ngSubmit)='Save(commentGroup.value)' style="margin: 30px;">
+      <textarea class="commenttoAdd form-control" rows="5" formControlName="content"
+        placeholder="Enter Comment Content" required></textarea>
+      <ul>
+        <li>
+          <button type="submit" class="btn btn-info" [disabled]="!commentGroup.valid">Submit</button>
+        </li>
+        <li>
+          <button type="reset" class="btn btn-danger">Cancel</button>
+        </li>
+        <li><span class="btn btn-light">7 Comments</span></li>
+      </ul>
+    </form>
   </div>
 </div>

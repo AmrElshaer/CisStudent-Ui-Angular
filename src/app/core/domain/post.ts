@@ -1,3 +1,4 @@
+import { Comment } from './comment';
 import { User } from 'src/app/core/domain/user';
 export interface Post {
    id: number;
@@ -6,4 +7,5 @@ export interface Post {
     createDate: Date;
     cisStudentId: number;
     cisStudent: User;
+    comments: Comment[];
 }
