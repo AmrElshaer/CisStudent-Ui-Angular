@@ -27,7 +27,7 @@
 <div class="commentContainer">
 
 
-  <div *ngFor="let comm of post.comments" class="blogComment">
+  <div *ngFor="let comm of post.comments; let i=index" class="blogComment">
 
 
     <div  class="comment">
@@ -43,33 +43,37 @@
         <section class="commentSection">
          {{comm.content}}
         </section>
-        <button class="reply btn-info">Reply</button>
+        <button (click)="togglePanel[i] = !togglePanel[i]" class="reply btn-info">Reply</button>
 
       </div>
     </div>
-    <!-- <hr>
-    <div class="replytoComment">
+    <hr>
 
-      <div class="comment">
+    <app-response-to-comment (pushResToComm)="PushResponseToComment($event)" [commentId]="comm.id" *ngIf="togglePanel[i]"></app-response-to-comment>
+    <div *ngFor="let resToComm of comm.responseToComments;">
+      <div class="replytoComment">
 
-        <div class="commentContent">
-          <div class="commentHeader">
-            <img class="personalImage" src="./assets/images/big_image_1.jpg">
-            <ul>
-              <li>Ruslan Fedosedko</li>
-              <li>February 5, 2021 2:14 am</li>
-            </ul>
+        <div class="comment">
+  
+          <div class="commentContent">
+            <div class="commentHeader">
+              <img class="personalImage" [src]="resToComm.cisStudent.image">
+              <ul>
+                <li>{{resToComm.cisStudent.name}}</li>
+                <li>{{resToComm.createDate|date}}</li>
+              </ul>
+            </div>
+            <section class="commentSection">
+              {{resToComm.content}}
+            </section>
+            <button class="reply">Reply</button>
+            <hr>
+          
           </div>
-          <section class="commentSection">
-            What do you mean by discoverable? As for me first thoughts when I read the post heading is that
-            some kind of service discovery will be discribed.
-          </section>
-          <button class="reply">Reply</button>
-          <hr>
-
         </div>
       </div>
-    </div> -->
+    </div>
+
   </div>
   <div class="addComment blogComment">
     <form role="form" [formGroup]='commentGroup' (ngSubmit)='Save(commentGroup.value)' style="margin: 30px;">

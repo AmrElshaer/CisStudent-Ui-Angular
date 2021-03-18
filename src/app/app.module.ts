@@ -1,4 +1,3 @@
-import { LoaderService } from './data/services/loader.service';
 import { CommentService } from './data/services/comment.service';
 import { TrainingService } from './data/services/training.service';
 import { JobService } from 'src/app/data/services/job.service';
@@ -17,11 +16,13 @@ import { AuthGuard } from './presentation/common/guard/auth.guard';
 import { HttpErrorInterceptor } from './presentation/common/HttpErrorInterceptor';
 import { LoaderInterceptor } from './presentation/common/LoaderInterceptor';
 import { LoaderComponent } from './presentation/common/components/loader/loader.component';
+import { ResToresService } from './data/services/res-tores.service';
+import { ResToCommentService } from './data/services/responseToComment.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent,LoaderComponent
+    AppComponent, LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,8 @@ import { LoaderComponent } from './presentation/common/components/loader/loader.
     PresentationModule,
     AppRoutingModule
   ],
-  providers: [AuthGuard, UserService, ProfileService, PostService, JobService, TrainingService,CommentService, [{
+  providers: [AuthGuard, UserService, ProfileService, PostService, JobService,
+    TrainingService, CommentService, ResToresService, ResToCommentService, [{
     provide: HTTP_INTERCEPTORS,
     useClass: HttpErrorInterceptor,
     multi: true

@@ -1,3 +1,4 @@
+import { ResponseToComment } from './../../../core/domain/ResponseToComment';
 import { CommentService } from './../../../data/services/comment.service';
 import { UserService } from './../../../data/services/user.service';
 import { Comment } from './../../../core/domain/comment';
@@ -20,14 +21,15 @@ export class ViewBlogComponent implements OnInit {
   post: Post;
   commentGroup: FormGroup;
   errors: string[];
+  togglePanel: any = {};
   constructor(private rote: Router, private commentService: CommentService, private userService: UserService,
-    private formBuilder: FormBuilder, private router: ActivatedRoute, private postService: PostService) {
+              private formBuilder: FormBuilder, private router: ActivatedRoute, private postService: PostService) {
 
   }
 
   ngOnInit(): void {
     this.router.paramMap.subscribe(rot => this.postId = +rot.get('id'));
-    this.postService.GetPost(this.postId).subscribe(res => this.post = res, err =>
+    this.postService.GetPost(this.postId).subscribe(res => {console.log(res); this.post = res; }, err =>
       this.errors = ValidationHelper.GetErrors(err));
     this.InitBlog();
   }
@@ -35,6 +37,10 @@ export class ViewBlogComponent implements OnInit {
     this.commentGroup = this.formBuilder.group({
       content: ['', Validators.required]
     });
+  }
+  PushResponseToComment(resTocomm: ResponseToComment) {
+    const comm = this.post.comments.find(a => a.id == resTocomm.commentId);
+    comm.responseToComments.push(resTocomm);
   }
   Save(comment: Comment) {
     comment.postId = this.postId;
@@ -44,8 +50,9 @@ export class ViewBlogComponent implements OnInit {
       comment.cisStudent = { name: user.name, image: user.image, id: user.id };
       comment.id = a;
       this.post.comments.push(comment);
-      this.commentGroup.reset({content:'Enter your comment'});
+      this.commentGroup.reset({content: 'Enter your comment'});
     });
 
   }
+
 }

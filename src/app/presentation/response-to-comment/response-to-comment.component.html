@@ -1,0 +1,14 @@
+<div class="addComment blogComment">
+  <form role="form" [formGroup]='responseTocommentGroup' (ngSubmit)='Save(responseTocommentGroup.value)' style="margin: 30px;">
+    <textarea class="commenttoAdd form-control" rows="5" formControlName="content"
+      placeholder="Enter Comment Content" required></textarea>
+    <ul>
+      <li>
+        <button type="submit" class="btn btn-info" [disabled]="!responseTocommentGroup.valid">Submit</button>
+      </li>
+      <li>
+        <button type="reset" class="btn btn-danger">Cancel</button>
+      </li>
+    </ul>
+  </form>
+</div>
