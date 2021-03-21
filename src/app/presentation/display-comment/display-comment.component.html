@@ -1,0 +1,25 @@
+<div *ngFor="let comm of comments; let i=index" class="blogComment">
+
+
+  <div class="comment">
+
+    <div class="commentContent">
+      <div class="commentHeader">
+        <img class="personalImage" [src]="comm.cisStudent.image">
+        <ul>
+          <li>{{comm.cisStudent.name}}</li>
+          <li>{{comm.createDate|date}}</li>
+        </ul>
+      </div>
+      <section class="commentSection">
+        {{comm.content}}
+      </section>
+      <button (click)="togglePanel[i] = !togglePanel[i]" class="reply btn-info">Reply</button>
+      <button (click)="ShowReplies(comm.id,i)" *ngIf="!togglePanelbtn[i]&&comm.comments?.length==0"  class="btn btn-light">Show Replies</button>
+    </div>
+  </div>
+  <hr>
+  <app-response-to-comment (pushResToComm)="PushResponseToComment($event)" [commentId]="comm.id"
+    *ngIf="togglePanel[i]"></app-response-to-comment>
+    <app-display-comment [comments]="comm.comments"></app-display-comment>
+</div>

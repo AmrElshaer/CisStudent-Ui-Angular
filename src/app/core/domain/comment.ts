@@ -1,4 +1,3 @@
-import { ResponseToComment } from './ResponseToComment';
 import { User } from './user';
 import { Post } from './post';
 export interface Comment {
@@ -9,5 +8,7 @@ export interface Comment {
   post: Post;
   cisStudentId: number;
  cisStudent: User;
-  responseToComments: ResponseToComment[] ;
+  commentId:number ;
+  Comm:Comment ;
+ comments:Comment[] ;
 }

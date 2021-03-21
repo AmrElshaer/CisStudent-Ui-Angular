@@ -25,60 +25,11 @@
 
 </div>
 <div class="commentContainer">
-
-
-  <div *ngFor="let comm of post.comments; let i=index" class="blogComment">
-
-
-    <div  class="comment">
-
-      <div  class="commentContent">
-        <div class="commentHeader">
-          <img class="personalImage" [src]="comm.cisStudent.image">
-          <ul>
-            <li>{{comm.cisStudent.name}}</li>
-            <li>{{comm.createDate|date}}</li>
-          </ul>
-        </div>
-        <section class="commentSection">
-         {{comm.content}}
-        </section>
-        <button (click)="togglePanel[i] = !togglePanel[i]" class="reply btn-info">Reply</button>
-
-      </div>
-    </div>
-    <hr>
-
-    <app-response-to-comment (pushResToComm)="PushResponseToComment($event)" [commentId]="comm.id" *ngIf="togglePanel[i]"></app-response-to-comment>
-    <div *ngFor="let resToComm of comm.responseToComments;">
-      <div class="replytoComment">
-
-        <div class="comment">
-  
-          <div class="commentContent">
-            <div class="commentHeader">
-              <img class="personalImage" [src]="resToComm.cisStudent.image">
-              <ul>
-                <li>{{resToComm.cisStudent.name}}</li>
-                <li>{{resToComm.createDate|date}}</li>
-              </ul>
-            </div>
-            <section class="commentSection">
-              {{resToComm.content}}
-            </section>
-            <button class="reply">Reply</button>
-            <hr>
-          
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  <app-display-comment [comments]="post.comments"></app-display-comment>
   <div class="addComment blogComment">
     <form role="form" [formGroup]='commentGroup' (ngSubmit)='Save(commentGroup.value)' style="margin: 30px;">
-      <textarea class="commenttoAdd form-control" rows="5" formControlName="content"
-        placeholder="Enter Comment Content" required></textarea>
+      <textarea class="commenttoAdd form-control" rows="5" formControlName="content" placeholder="Enter Comment Content"
+        required></textarea>
       <ul>
         <li>
           <button type="submit" class="btn btn-info" [disabled]="!commentGroup.valid">Submit</button>
@@ -86,7 +37,6 @@
         <li>
           <button type="reset" class="btn btn-danger">Cancel</button>
         </li>
-        <li><span class="btn btn-light">{{post.comments?.length}} Comments</span></li>
       </ul>
     </form>
   </div>

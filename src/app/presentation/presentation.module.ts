@@ -31,13 +31,14 @@ import { StudentProfileComponent } from './profile/student-profile/student-profi
 import { AllFollowersComponent } from './Followers/all-followers/all-followers.component';
 import { ViewBlogComponent } from './post/view-blog/view-blog.component';
 import { ResponseToCommentComponent } from './response-to-comment/response-to-comment.component';
+import { DisplayCommentComponent } from './display-comment/display-comment.component';
 @NgModule({
   declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
     HeaderComponent, SidebarComponent, CreatePostComponent, AllPostsComponent, PostDetailsComponent,
     CreateTrainingComponent, TrainingDetailsComponent, AllTrainingComponent,
      AllJobsComponent, CreateJobComponent, JobDetailsComponent,MailPipe,
-      StudentProfileComponent, AllFollowersComponent, ViewBlogComponent, ResponseToCommentComponent]
+      StudentProfileComponent, AllFollowersComponent, ViewBlogComponent, ResponseToCommentComponent, DisplayCommentComponent]
     ,
   imports: [
     CommonModule,

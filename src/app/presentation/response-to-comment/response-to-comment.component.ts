@@ -1,13 +1,9 @@
-import { ResponseToComment } from './../../core/domain/ResponseToComment';
-import { ResToCommentService } from './../../data/services/responseToComment.service';
-import { Comment } from './../../core/domain/comment';
+import { Comment } from 'src/app/core/domain/comment';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { CommentService } from 'src/app/data/services/comment.service';
-import { PostService } from 'src/app/data/services/post.service';
 import { UserService } from 'src/app/data/services/user.service';
-import { ValidationHelper } from '../common/ValidationHelper';
 import { Input,EventEmitter,Output  } from '@angular/core';
 @Component({
   selector: 'app-response-to-comment',
@@ -16,11 +12,11 @@ import { Input,EventEmitter,Output  } from '@angular/core';
 })
 export class ResponseToCommentComponent implements OnInit {
   @Input('commentId') commentId: number;
-  @Output() pushResToComm = new EventEmitter<ResponseToComment>();
+  @Output() pushResToComm = new EventEmitter<Comment>();
   comment: Comment;
   responseTocommentGroup: FormGroup;
   errors: string[];
-  constructor(private rote: Router, private responseTocommentService: ResToCommentService, private userService: UserService,
+  constructor(private rote: Router, private commentService: CommentService, private userService: UserService,
     private formBuilder: FormBuilder) {
 
   }
@@ -33,14 +29,14 @@ export class ResponseToCommentComponent implements OnInit {
       content: ['', Validators.required]
     });
   }
-  Save(respTocomment: ResponseToComment) {
-    respTocomment.commentId = this.commentId;
+  Save(comm:Comment) {
+    comm.commentId = this.commentId;
     const user = this.userService.getUser();
-    respTocomment.cisStudentId = +user.id;
-    this.responseTocommentService.InsertResToComment(respTocomment).subscribe(a => {
-      respTocomment.cisStudent = { name: user.name, image: user.image, id: user.id };
-      respTocomment.id = a;
-      this.pushResToComm.emit(respTocomment);
+    comm.cisStudentId = +user.id;
+    this.commentService.InsertComment(comm).subscribe(a => {
+      comm.cisStudent = { name: user.name, image: user.image, id: user.id };
+      comm.id = a;
+      this.pushResToComm.emit(comm);
       this.responseTocommentGroup.reset({content:'Enter your comment'});
     });
   }

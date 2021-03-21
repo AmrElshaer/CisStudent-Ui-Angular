@@ -16,10 +16,6 @@ import { AuthGuard } from './presentation/common/guard/auth.guard';
 import { HttpErrorInterceptor } from './presentation/common/HttpErrorInterceptor';
 import { LoaderInterceptor } from './presentation/common/LoaderInterceptor';
 import { LoaderComponent } from './presentation/common/components/loader/loader.component';
-import { ResToresService } from './data/services/res-tores.service';
-import { ResToCommentService } from './data/services/responseToComment.service';
-
-
 @NgModule({
   declarations: [
     AppComponent, LoaderComponent
@@ -33,7 +29,7 @@ import { ResToCommentService } from './data/services/responseToComment.service';
     AppRoutingModule
   ],
   providers: [AuthGuard, UserService, ProfileService, PostService, JobService,
-    TrainingService, CommentService, ResToresService, ResToCommentService, [{
+    TrainingService, CommentService, [{
     provide: HTTP_INTERCEPTORS,
     useClass: HttpErrorInterceptor,
     multi: true

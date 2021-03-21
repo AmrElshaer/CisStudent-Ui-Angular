@@ -9,6 +9,10 @@ import { CommentRepository } from 'src/app/core/repositories/comment-repository'
 })
 
 export class CommentService extends CommentRepository {
+  GetComments(commentId: number): Observable<Comment[]> {
+    const url = `${this.baseUrl}/Comment/Get?commentId=${commentId}`;
+    return this.http.get<Comment[]>(url, this.options);
+  }
 
 
   constructor(private http: HttpClient) {

@@ -1,7 +1,6 @@
-import { ResponseToComment } from './../../../core/domain/ResponseToComment';
+import { Comment } from 'src/app/core/domain/comment';
 import { CommentService } from './../../../data/services/comment.service';
 import { UserService } from './../../../data/services/user.service';
-import { Comment } from './../../../core/domain/comment';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
@@ -28,19 +27,23 @@ export class ViewBlogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.paramMap.subscribe(rot => this.postId = +rot.get('id'));
-    this.postService.GetPost(this.postId).subscribe(res => {console.log(res); this.post = res; }, err =>
-      this.errors = ValidationHelper.GetErrors(err));
+   this.ReFreshPost();
     this.InitBlog();
+  }
+  ReFreshPost(){
+    this.router.paramMap.subscribe(rot =>{
+      this.postId = +rot.get('id');
+      this.postService.GetPost(this.postId).subscribe(res => {this.post = res; }, err =>
+      this.errors = ValidationHelper.GetErrors(err));
+    });
   }
   private InitBlog() {
     this.commentGroup = this.formBuilder.group({
       content: ['', Validators.required]
     });
   }
-  PushResponseToComment(resTocomm: ResponseToComment) {
-    const comm = this.post.comments.find(a => a.id == resTocomm.commentId);
-    comm.responseToComments.push(resTocomm);
+  PushResponseToComment() {
+    this.ReFreshPost();
   }
   Save(comment: Comment) {
     comment.postId = this.postId;
