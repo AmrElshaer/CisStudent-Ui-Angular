@@ -28,7 +28,7 @@ export class TrainingDetailsComponent implements OnInit {
   }
 
   DeleteTraining() {
-    this.trainingService.DeleteTraining(this.trainingId).subscribe(() => this.rote.navigate(['/Blog/All']),
+    this.trainingService.DeleteTraining(this.trainingId).subscribe(() => this.rote.navigate(['/Job/All']),
      err => this.errors = ValidationHelper.GetErrors(err));
   }
 }

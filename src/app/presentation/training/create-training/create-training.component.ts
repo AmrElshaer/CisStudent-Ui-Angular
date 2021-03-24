@@ -57,7 +57,7 @@ export class CreateTrainingComponent implements OnInit {
     }
     training.cisStudentId = this.studentId;
     this.trainingService.UpSrtTraining(training).subscribe(trainingId => {
-    this.router.navigate([`/Training/Delete/${trainingId}`]);
+    this.router.navigate([`Training/All`]);
     }, err => this.errors = ValidationHelper.GetErrors(err));
   }
 }

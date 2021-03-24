@@ -8,24 +8,24 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./display-comment.component.css']
 })
 export class DisplayCommentComponent implements OnInit {
-  @Input() comments:Comment[];
-  constructor(private commentService:CommentService) { }
+  @Input() comments: Comment[];
+  constructor(private commentService: CommentService) { }
   togglePanel: any = {};
-  togglePanelbtn:any={};
+  togglePanelbtn: any = {};
   ngOnInit(): void {
   }
-  PushResponseToComment(comment:Comment){
-    var comm= this.comments.find(a=>a.id==comment.commentId);
-    if(comm.comments){
+  PushResponseToComment(comment: Comment) {
+    let comm = this.comments.find(a => a.id == comment.commentId);
+    if (comm.comments) {
       comm.comments.push(comment);
-    }else{
-      comm.comments=[comment];
+    } else {
+      comm.comments = [comment];
     }
   }
-  ShowReplies(commId,index){
-    this.togglePanelbtn[index] = !this.togglePanelbtn[index]
-    this.commentService.GetComments(commId).subscribe(a=>{
-      a.forEach(x=>this.comments.find(a=>a.id==commId).comments.push(x))
+  ShowReplies(commId, index) {
+    this.togglePanelbtn[index] = !this.togglePanelbtn[index];
+    this.commentService.GetComments(commId).subscribe(a => {
+      a.forEach(x => this.comments.find(a => a.id == commId).comments.push(x));
     });
   }
 }

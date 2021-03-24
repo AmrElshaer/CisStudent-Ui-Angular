@@ -60,7 +60,7 @@ export class CreateJobComponent implements OnInit {
     }
     job.cisStudentId = this.studentId;
     this.jobService.UpSrtJob(job).subscribe(jobId => {
-    this.router.navigate([`/Job/Delete/${jobId}`]);
+    this.router.navigate([`/Job/All`]);
     }, err => this.errors = ValidationHelper.GetErrors(err));
   }
 }

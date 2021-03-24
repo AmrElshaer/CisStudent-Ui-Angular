@@ -55,7 +55,7 @@ export class CreatePostComponent implements OnInit {
     }
     post.cisStudentId = this.studentId;
     this.postService.UpSrtPost(post).subscribe(postId => {
-    this.router.navigate([`/Blog/Delete/${postId}`]);
+    this.router.navigate([``]);
     }, err => this.errors = ValidationHelper.GetErrors(err));
   }
 }

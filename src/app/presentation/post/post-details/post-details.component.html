@@ -1,56 +1,45 @@
-<app-header></app-header>
-<section  class=" mb-5 site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5" style="background-image: url(./assets/images/big_image_1.jpg);">
-  <div class="container">
-    <div class="row align-items-center site-hero-inner justify-content-center">
-      <div class="col-md-8 text-center">
-        <div class="mb-5 element-animate fadeInUp element-animated">
-          <h1 class="mb-3">Blog</h1>
-        </div>
-
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-user">
+      <div class="card-header">
+        <div class="card-title">
+          <a style="margin-right: 15px;" class="btn btn-outline-primary" routerLink="/Blog/All"><i class="fas fa-border-all"></i><span> All</span> </a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- END section -->
-
-<section class="site-section">
-  <div class="container">
-    <div class="row">
-     <div class="col-md-3 sidebar">
-         <app-profile-details></app-profile-details>
       </div>
-      <div class="col-md-7 blog-content"  >
-        <div class="container">
-          <div>
-            <a style="margin-right: 15px;" class="btn btn-outline-success" routerLink="/Blog/All">All Blogs</a>
-         <a class="btn btn-outline-success" routerLink="/Blog/Create">Create Blog</a>
-     </div>
-         <div>
-          <form   style="margin: 30px;">
-            <app-error [errors]="errors"></app-error>
-            <div class="form-group">
-                <input [value]="post?.title" class="form-control" readonly>
+      <div class="card-body">
+        <form role="form">
+          <app-error [errors]="errors"></app-error>
+
+
+          <div class="row">
+            <div class="col-md-12 pr-1">
+              <div class="form-group">
+                <label>Topic </label>
+                <input readonly [value]="post?.title" autofocus autocomplete="none" type="text"  placeholder="Enter Title"
+                class="form-control" required >
+              </div>
             </div>
-            <div class="form-group">
-                  <textarea  class="form-control" rows="5" readonly [value]="post?.content">
-                  </textarea>
+          </div>
+          <div class="row">
+            <div class="col-md-12 pr-1">
+              <div class="form-group">
+                <label> Content </label>
+                <textarea class="form-control" rows="5" [value]="post?.content" >
+
+                </textarea>
+              </div>
             </div>
-            <div class="form-group">
+          </div>
+          <div class="row">
+            <div class="update ml-auto mr-auto">
+              <button type="button" class="btn btn-danger btn-round" (click)="DeletePost()">Delete</button>
             </div>
-            <div class="form-group mt-4">
-                <div class="row">
-                    <div class="col-3 col-md-3 mb-3">
-                        <button type="button" class="btn btn-danger" (click)="DeletePost()">Delete</button>
-                    </div>
-                </div>
-            </div>
+          </div>
         </form>
-         </div>
-        </div>
       </div>
-     <app-sidebar></app-sidebar>
     </div>
+
   </div>
-</section>
+</div>
+
 

@@ -1,0 +1,36 @@
+<div class="sidebar-wrapper">
+  <div class="logo" *ngIf="Authorize">
+    <a [routerLink]="['/StudentProfile/'+user.id]" class="simple-text logo-mini">
+      <div class="logo-image-small">
+        <img [src]="user.image">
+      </div>
+    </a>
+    <a [routerLink]="['/StudentProfile/'+user.id]" class="simple-text logo-normal">
+      {{user.name}}
+    </a>
+  </div>
+    <ul class="nav">
+        <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
+            <a [routerLink]="[menuItem.path]">
+                <i class="{{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+          <li *ngIf="!Authorize" routerLinkActive="active">
+            <a routerLink="/signUp">
+              <i class="fas fa-user-plus"></i>
+              <p>Sign Up</p>
+            </a>
+          </li>
+          <li *ngIf="!Authorize" routerLinkActive="active">
+            <a  routerLink="/signIn">
+              <i class="fas fa-sign-in-alt"></i>
+              <p>Sign In</p>
+            </a>
+          </li>
+          <li *ngIf="Authorize" >
+
+            <a (click)="logOut()"><i class="fas fa-sign-out-alt"></i><p> LogOut</p></a>
+          </li>
+    </ul>
+</div>

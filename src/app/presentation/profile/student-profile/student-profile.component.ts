@@ -24,12 +24,16 @@ export class StudentProfileComponent implements OnInit {
   studentId: number;
   textFollow: string;
   followId: number|null;
+  followers:Follow[];
   constructor(private postService: PostService, private userService: UserService,
               private profileService: ProfileService, private router: ActivatedRoute, private followService: FollowService) { }
   ngOnInit() {
       this.router.paramMap.subscribe(rot => {
         this.visitorId = +rot.get('id');
         this.studentId = +this.userService.getUser().id;
+        //Followers
+        this.followService.GetFollows(+this.visitorId).subscribe(allfollowers=>this.followers=allfollowers,
+          err=>this.errors=ValidationHelper.GetErrors(err));
         // Get Posts
         this.postService.GetPosts(this.visitorId).subscribe(data => this.posts = data,
         err => this.errors = ValidationHelper.GetErrors(err));

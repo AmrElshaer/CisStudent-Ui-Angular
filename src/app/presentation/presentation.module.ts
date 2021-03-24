@@ -32,19 +32,28 @@ import { AllFollowersComponent } from './Followers/all-followers/all-followers.c
 import { ViewBlogComponent } from './post/view-blog/view-blog.component';
 import { ResponseToCommentComponent } from './response-to-comment/response-to-comment.component';
 import { DisplayCommentComponent } from './display-comment/display-comment.component';
+import { AdminLayoutComponent } from './Layouts/admin-layout/admin-layout.component';
+import { FixedpluginComponent } from './common/fixedplugin/fixedplugin.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { NavbarComponent } from './common/navbar/navbar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SidebarLayoutComponent } from './sidebar/sidebar.component';
+import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
 @NgModule({
   declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
     HeaderComponent, SidebarComponent, CreatePostComponent, AllPostsComponent, PostDetailsComponent,
     CreateTrainingComponent, TrainingDetailsComponent, AllTrainingComponent,
      AllJobsComponent, CreateJobComponent, JobDetailsComponent,MailPipe,
-      StudentProfileComponent, AllFollowersComponent, ViewBlogComponent, ResponseToCommentComponent, DisplayCommentComponent]
+      StudentProfileComponent, AllFollowersComponent, ViewBlogComponent, ResponseToCommentComponent, DisplayCommentComponent, AdminLayoutComponent, FixedpluginComponent,
+      FooterComponent, NavbarComponent,SidebarLayoutComponent, UserProfilePageComponent]
     ,
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    NgbModule
   ],
   exports: [UserRoutingModule, HomeRoutingModule, ProfileRoutingModule, HeaderComponent,
                  PostRoutingModule, TrainingRoutingModule, JobRoutingModule,FollowerRoutingModule]

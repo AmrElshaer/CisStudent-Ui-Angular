@@ -1,67 +1,62 @@
-<app-header></app-header>
-<section  class=" mb-5 site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5" style="background-image: url(./assets/images/big_image_1.jpg);">
-  <div class="container">
-    <div class="row align-items-center site-hero-inner justify-content-center">
-      <div class="col-md-8 text-center">
-        <div class="mb-5 element-animate fadeInUp element-animated">
-          <h1 class="mb-3">Training</h1>
-        </div>
+<div class="row">
+  <div class="col-md-12">
+    <a style="margin-right: 15px;" class="btn btn-outline-success" routerLink="/Training/All"><i class="fas fa-border-all"></i><span> All</span> </a>
+    <a class="btn btn-outline-success" routerLink="/Training/Create"><i class="far fa-plus-square"></i> Create</a>
 
-      </div>
-    </div>
   </div>
-</section>
+</div>
 
-<!-- END section -->
+<div class="row">
 
-<section class="site-section">
-  <div class="container">
-    <div class="row">
-     <div class="col-md-3 sidebar">
-         <app-profile-details></app-profile-details>
+  <div *ngFor="let training of trainings" class="col-md-6">
+    <div class="card card-user">
+      <div class="image">
       </div>
-      <div class="col-md-7 blog-content"  >
-        <div class="container">
-         <div class="row">
-           <div class="col">
-            <a style="margin-right: 15px;" class="btn btn-outline-success" routerLink="/Training/All">All Training</a>
-            <a class="btn btn-outline-success" routerLink="/Training/Create">Create Training</a>
-           </div>
-         </div>
-
-         <div class="row" *ngFor="let training of trainings" class="card card-default" style="margin-top: 5%;">
-          <div class="text-white card-header">
-            <a [routerLink]="['/Profile/'+training.cisStudent.id]">
-                <img [src]="training.cisStudent.image" style="max-width:50px; margin-right: 15px;">
-                <span>{{training.cisStudent.name}}</span>
-            </a>
-
-          </div>
-          <div class="panel-body" style="padding: 5px;">
-              <div style="margin-top: 15px;margin-bottom: 15px;">
-                  <span>{{training.createDate|date}}</span>
-              </div>
-              <p>
-                {{training.content}}
-              </p>
-              <div>
-                <ul>
-                  <li *ngFor="let tech of training?.technology.split(' ')"><a routerLink="#">{{tech}}</a></li>
-                </ul>
-              </div>
-               <div>
-                 <h6>{{training.place}}</h6>
-               </div>
-          </div>
-          <div  class="card-footer bg-light">
-            <a  style="margin-right: 15px;" class="btn btn-outline-primary" [routerLink]="['/Training/Edit/'+training.id]">Edit</a>
-            <a class="btn btn-outline-primary" [routerLink]="['/Training/Delete/'+training.id]">Delete</a>
-          </div>
+      <div class="card-body">
+        <div class="author">
+          <a [routerLink]="['/StudentProfile/'+training.cisStudent.id]">
+            <img class="avatar border-gray"  [src]="training.cisStudent.image" alt="...">
+            <h5 class="title">{{training.cisStudent.name}}</h5>
+          </a>
+          <p class="description">
+            {{training.createDate|date}}
+          </p>
+        </div>
+        <h3 class="text-center">
+          {{training.place}}
+        </h3>
+        <p>
+          {{training.content}}
+        </p>
+        <a routerLink="#" *ngFor="let tech of training?.technology.split(' ')"> {{tech}} </a>
+      </div>
+      <div class="card-footer">
+        <hr>
+        <div class="button-container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-6 ml-auto">
+              <h5>
+                <br>
+                <small><a  class="btn btn-primary" [routerLink]="['/Training/Edit/'+training.id]">
+                  <i class="far fa-edit"></i>
+                </a></small>
+              </h5>
+            </div>
+            <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+              <h5>
+                <br>
+                <small><a class="btn btn-danger" [routerLink]="['/Training/Delete/'+training.id]">
+                  <i class="far fa-trash-alt"></i>
+                </a></small>
+              </h5>
+            </div>
+            <div class="col-lg-3 mr-auto">
+            </div>
           </div>
         </div>
       </div>
-     <app-sidebar></app-sidebar>
     </div>
   </div>
-</section>
+
+</div>
 

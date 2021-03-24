@@ -6,33 +6,38 @@
   <base href="/">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="./assets/css/bootstrap.css">
-  <link rel="stylesheet" href="./assets/css/animate.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <base href="/">
+
+  <!--  CSS for Demo Purpose, don't include it in your project     -->
+  <link href="./assets/css/demo.css" rel="stylesheet" />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 </head>
 <body>
-  <app-root></app-root>
-
- <script src="./assets/js/jquery-3.2.1.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
- <script src="./assets/js/main.js"></script>
- <script>
-$(document).ready(function(){
-  $('#customFile').on('change',function(){
-        //get the file name
+  <app-root>
+    <div class="loader-container">
+      <div class="loader"></div>
+  </div>
+  </app-root>
 
 
-        var fileName = $(this).val();
-        //replace the "Choose a file" label
-        $(this).next('.custom-file-label').html(fileName);
-    })
 
-});
-
-</script>
 </body>
+<script>
+  $(document).ready(function(){
+    $('#customFile').on('change',function(){
+          //get the file name
+
+
+          var fileName = $(this).val();
+          //replace the "Choose a file" label
+          $(this).next('.custom-file-label').html(fileName);
+      })
+
+  });
+
+  </script>
 </html>

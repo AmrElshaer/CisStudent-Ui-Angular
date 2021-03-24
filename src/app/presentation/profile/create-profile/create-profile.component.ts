@@ -21,27 +21,32 @@ export class CreateProfileComponent implements OnInit {
     this.InitForm();
     this.studentId = +this.userService.getUser().id;
     this.profileService.GetProfile(this.studentId).subscribe(
-     data => this.AppendProfile(data));
+     data => {this.AppendProfile(data); console.log(this.profileGroup.value);});
   }
   private InitForm() {
     this.profileGroup = this.formBuilder.group({
       colleage: [''], university: [''],city:[''],
       age: [''], experience: [''], language: [''], programing_Language: [''], carear: [''], appreciation: [''],
-      company: [''], addition: [''], cisStudentId: [''], kind: [''],id:['']
+      company: ['' ], addition: [''], cisStudentId: [''], kind: [''],id:['']
     });
   }
 
   AppendProfile(profile: Profile): void {
     this.profileId = profile.id;
-    this.profileGroup.setValue(
-     profile);
+    this.profileGroup.setValue({
+      colleage:profile.colleage, university: profile.university,city:profile.city,
+      age: profile.age, experience: profile.experience, language: profile.language, programing_Language: profile.programing_Language, carear: profile.carear, appreciation: profile.appreciation,
+      company: profile.company, addition: profile.addition, cisStudentId: profile.cisStudentId, kind: profile.kind,id:profile.id
+    });
+     console.log(this.profileGroup.value);
   }
   Save(profile: Profile) {
+    console.log(profile);
     if (profile) {
       profile.id = this.profileId;
       profile.cisStudentId = this.studentId;
       this.profileService.UpsrtProfile(profile).subscribe(
-      () => this.router.navigate(['/']),
+      () => this.router.navigate(['/StudentProfile/'+this.studentId]),
       err => this.errors = ValidationHelper.GetErrors(err));
     }
   }

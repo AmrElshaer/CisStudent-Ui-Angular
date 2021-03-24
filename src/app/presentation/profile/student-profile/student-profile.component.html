@@ -1,4 +1,201 @@
-<app-header></app-header>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card card-user">
+      <div class="image">
+        <img src="assets/img/damir-bosnjak.jpg" alt="...">
+      </div>
+      <div class="card-body">
+        <div class="author">
+          <a [routerLink]="['/StudentProfile/'+profile?.cisStudentId]">
+            <img class="avatar border-gray" [src]="profile?.cisStudent.image" alt="...">
+            <h5 class="title">{{profile?.cisStudent.name}}</h5>
+          </a>
+          <p class="description">
+           {{profile?.colleage}}
+          </p>
+        </div>
+        <p class="description text-center">
+          {{profile?.addition}}
+        </p>
+      </div>
+      <div class="card-footer">
+        <hr>
+        <div class="button-container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-6 ml-auto">
+              <h5>
+                <br>
+                <div *ngIf="studentId!==visitorId">
+                  <button class="btn btn-primary"  (click)="FollowManage()">{{textFollow}}</button>
+                </div>
+              </h5>
+            </div>
+            <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+            </div>
+            <div class="col-lg-3 mr-auto">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" *ngIf="followers">
+      <div class="card-header">
+        <h4 class="card-title">Followers</h4>
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled team-members">
+          <li *ngFor="let follower of followers">
+            <div class="row">
+              <div class="col-md-2 col-2">
+                <div class="avatar">
+                  <img [src]="follower.cisStudentSend.image" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                </div>
+              </div>
+              <div class="col-md-7 col-7">
+                {{follower.cisStudentSend.name}}
+                <br />
+                <span class="text-muted">
+                  <small>Offline</small>
+                </span>
+              </div>
+              <div class="col-md-3 col-3 text-right">
+                <a class="btn btn-sm btn-outline-success btn-round btn-icon" [routerLink]="['/StudentProfile/'+follower.cisStudentSend.id]">
+
+                  <i class="fa fa-envelope"></i>
+              </a>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card card-user">
+      <div class="card-header">
+        <h5 class="card-title">Profile</h5>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="row">
+            <div class="col-md-5 pr-1">
+              <div class="form-group">
+                <label>Company </label>
+                <input type="text" class="form-control" disabled="" placeholder="Company" value="{{profile?.company}}">
+              </div>
+            </div>
+            <div class="col-md-7 pl-1">
+              <div class="form-group">
+                <label for="Carear">Carear</label>
+                <input type="text" value="{{profile?.carear}}" disabled class="form-control" placeholder="Carear">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-1">
+              <div class="form-group">
+                <label>Kind</label>
+                <input type="text" class="form-control" disabled placeholder="Kind" value="{{profile?.kind}}">
+              </div>
+            </div>
+            <div class="col-md-6 pl-1">
+              <div class="form-group">
+                <label>Language</label>
+                <input type="text" class="form-control" disabled placeholder="Language" value="{{profile?.language}}">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Programming Language</label>
+                <input type="text" class="form-control" disabled placeholder="Programming Language" value="{{profile?.programing_Language}}">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" disabled placeholder="City" value="{{profile?.city}}">
+              </div>
+            </div>
+            <div class="col-md-4 px-1">
+              <div class="form-group">
+                <label>University</label>
+                <input type="text" class="form-control" disabled placeholder="University" value="{{profile?.university}}">
+              </div>
+            </div>
+            <div class="col-md-4 pl-1">
+              <div class="form-group">
+                <label>Experience</label>
+                <input type="text" disabled class="form-control" value="{{profile?.experience}}" placeholder="Experience">
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="studentId===visitorId">
+            <div class="update ml-auto mr-auto">
+              <a  routerLink="/Profile" class="btn btn-primary btn-round">Update Profile</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+      <div *ngFor="let post of posts" class="card card-user">
+        <div class="image">
+        </div>
+        <div class="card-body">
+          <div class="author">
+            <a [routerLink]="['/StudentProfile/'+post.cisStudent.id]">
+              <img class="avatar border-gray"  [src]="post.cisStudent.image" alt="...">
+              <h5 class="title">{{post.cisStudent.name}}</h5>
+            </a>
+            <p class="description">
+              {{post.createDate|date}}
+            </p>
+          </div>
+          <h3 class="text-center">
+            {{post.title}}
+          </h3>
+          <p>
+            {{post.content}}
+          </p>
+        </div>
+        <div class="card-footer">
+          <hr>
+          <div class="button-container">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-6 ml-auto">
+                <h5>
+                  <br>
+                  <small>Like</small>
+                </h5>
+              </div>
+              <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+                <h5>
+                  <br>
+                  <small>Motion</small>
+                </h5>
+              </div>
+              <div class="col-lg-3 mr-auto">
+                <h5>
+                  <br>
+                  <small>
+                    <a [routerLink]="['/Blog/ViewBlog/'+post.id]">See</a>
+                  </small>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- <app-header></app-header>
 <section class="site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5" style="background-image: url(./assets/images/big_image_1.jpg);">
   <div class="container">
     <div class="row align-items-center site-hero-inner justify-content-center">
@@ -64,4 +261,4 @@
     </div>
   </div>
 </section>
-
+ -->

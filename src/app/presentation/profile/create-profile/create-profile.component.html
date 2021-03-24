@@ -1,83 +1,111 @@
-<app-header></app-header>
-<section  class=" mb-5 site-hero site-hero-innerpage overlay" data-stellar-background-ratio="0.5" style="background-image: url(./assets/images/big_image_1.jpg);">
-  <div class="container">
-    <div class="row align-items-center site-hero-inner justify-content-center">
-      <div class="col-md-8 text-center">
-        <div class="mb-5 element-animate fadeInUp element-animated">
-          <h1 class="mb-3">Profile</h1>
-        </div>
-
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-user">
+      <div class="card-header">
+        <h5 class="card-title">Profile <i class="far fa-edit"></i></h5>
       </div>
-    </div>
-  </div>
-</section>
+      <div class="card-body">
+        <form [formGroup]='profileGroup' (ngSubmit)='Save(profileGroup.value)'>
+          <app-error [errors]="errors"></app-error>
 
-<!-- END section -->
 
-<section class="site-section">
-  <div class="container">
-    <div class="row">
-     <div class="col-md-3 sidebar">
-         <app-profile-details></app-profile-details>
-      </div>
-      <div class="col-md-7 blog-content"  >
-        <div class="container">
-          <form [formGroup]='profileGroup' (ngSubmit)='Save(profileGroup.value)'>
-              <app-error [errors]="errors"></app-error>
-              
-                <div class="form-group row" >
-                  <input placeholder="Age" formControlName="age" class="form-control col-sm-8" type="text" name="age">
-                </div>
-                <div class="form-group row">
-                  <input placeholder="Colleage" formControlName="colleage" class="form-control col-sm-8" type="text" name="colleage">
-                </div>
-              
-              <div class="form-group row">
-                  <input placeholder="Colleage" formControlName="colleage" class="form-control col-sm-8" type="text" name="colleage">
+          <div class="row">
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>Company </label>
+                <input placeholder="Company" formControlName="company" class="form-control" type="text"/>
               </div>
-              <div class="form-group row">
-                  <input placeholder="Language" formControlName="language" class="form-control col-sm-8" type="text" name="language">
-              </div>
-              <div class="form-group row">
-                  <input placeholder="University" formControlName="university" class="form-control col-sm-8" type="text" name="university">
-              </div>
-              <div class="form-group row">
-                <input placeholder="City" formControlName="city" class="form-control col-sm-8" type="text" name="city">
             </div>
-              <div class="form-group row">
-                  <input placeholder="Experience" formControlName="experience"  class="form-control col-sm-8" type="text">
+            <div class="col-md-4 pl-1">
+              <div class="form-group">
+                <label for="Carear">Carear</label>
+                <input placeholder="Carear" formControlName="carear" class="form-control" type="text"/>
               </div>
-              <div class="form-group row">
-                  <input placeholder="Programing Language" formControlName="programing_Language" class="form-control col-sm-8" type="text"/>
+            </div>
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>Age</label>
+                <input placeholder="Age" formControlName="age" class="form-control" type="text" name="age">
               </div>
-              <div class="form-group row">
-                  <input placeholder="Carear" formControlName="carear" class="form-control col-sm-8" type="text"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-1">
+              <div class="form-group">
+                <label>Kind</label>
+                <select formControlName="kind" class="form-control">
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  </select>
               </div>
-              <div class="form-group row">
-                  <input placeholder="Appreciation" formControlName="appreciation" class="form-control col-sm-8" type="text"/>
+            </div>
+            <div class="col-md-6 pl-1">
+              <div class="form-group">
+                <label>Language</label>
+                <input placeholder="Language" formControlName="language" class="form-control" type="text" name="language">
               </div>
-              <div class="form-group row">
-                  <input placeholder="Company" formControlName="company" class="form-control col-sm-8" type="text"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Programming Language</label>
+                <input placeholder="Programing Language" formControlName="programing_Language" class="form-control" type="text"/>
               </div>
-              <div class="form-group row">
-                  <input placeholder="Addition" formControlName="addition" class="form-control col-sm-8" type="text"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>City</label>
+                <input placeholder="City" formControlName="city" class="form-control" type="text" name="city">
               </div>
-              <div class="form-group row">
-                  <select formControlName="kind" class="form-control col-sm-8" type="text">
-                      <option disabled>Kind</option>
-                      <option value="Female">Female</option>
-                      <option value="Male">Male</option>
-        
-                      </select>
+            </div>
+            <div class="col-md-4 px-1">
+              <div class="form-group">
+                <label>University</label>
+                <input placeholder="University" formControlName="university" class="form-control" type="text" name="university">
               </div>
-              <div style="text-align: center;" class="row">
-                    <button class="btn btn-primary" [disabled]='!profileGroup.valid'>Save</button>
+            </div>
+            <div class="col-md-4 pl-1">
+              <div class="form-group">
+                <label>Experience</label>
+                <input placeholder="Experience" formControlName="experience"  class="form-control" type="text">
               </div>
-        
-          </form>
-        </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-1">
+              <div class="form-group">
+                <label>Colleage</label>
+                <input placeholder="Colleage" formControlName="colleage" class="form-control" type="text" name="colleage">
+              </div>
+            </div>
+            <div class="col-md-6 pr-1">
+              <div class="form-group">
+                <label>Appreciation</label>
+                <input placeholder="Appreciation" formControlName="appreciation" class="form-control" type="text"/>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>About Me</label>
+                <textarea formControlName="addition" class="form-control textarea"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="update ml-auto mr-auto">
+              <button class="btn btn-primary btn-round" [disabled]='!profileGroup.valid'>Save</button>
+              <a  [routerLink]="['/StudentProfile/'+studentId]" class="btn btn-light btn-round">PreView Profile</a>
+            </div>
+          </div>
+        </form>
       </div>
-     <app-sidebar></app-sidebar>
     </div>
+
   </div>
-</section>
+</div>

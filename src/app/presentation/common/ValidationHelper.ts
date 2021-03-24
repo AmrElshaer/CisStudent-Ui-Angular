@@ -11,7 +11,9 @@ export class  ValidationHelper {
     } else if (err.status === 401) {
      errors.push('Session is expire please login');
     } else {
-      errors.push('something went wrong!');
+      console.log(err)
+      console.log("errorrr");
+       errors.push('something went wrong!');
     }
     return errors;
   }
