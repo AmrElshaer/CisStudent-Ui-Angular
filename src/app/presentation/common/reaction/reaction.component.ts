@@ -35,26 +35,37 @@ export class ReactionComponent implements OnInit,OnDestroy {
   }
   react(val) {
     if (this.userReaction.length>0&&this.userReaction[0].reactionIndex === val) {
-      this.reactionSvc.DeleteReaction(+this.user.id,this.postId).subscribe(()=>{
-        this.userReaction=[];
-        this.reactionCount=this.reactionCount.filter(a=>a.postId!=this.postId&&a.studentId!=+this.user.id);
-      },err=>console.log("error when remove react"))
+      this.DeleteReaction();
     } else {
       this.reactionSvc.UpSrtReaction(+this.user.id,this.postId, val).subscribe(a=>{
         if(this.userReaction.length==0){
-          let rec={id:a,studentId:+this.user.id,postId:this.postId,reactionIndex:val};
-          this.userReaction.push(rec);
-          this.reactionCount.push(rec);
+          this.AddReaction(a, val);
         }else{
-            this.userReaction[0]={
-              id:a,studentId:+this.user.id,postId:this.postId,reactionIndex:val
-            }
-            let rect= this.reactionCount.filter(a=>a.postId==this.postId&&a.studentId==+this.user.id)[0];
-            rect.reactionIndex=val;
-
+            this.UpdateReaction(a, val);
         }
-      },err=>console.log("error when update"));
+      });
     }
+  }
+
+  private UpdateReaction(a: number, val: any) {
+    this.userReaction[0] = {
+      id: a, studentId: +this.user.id, postId: this.postId, reactionIndex: val
+    };
+    let rect = this.reactionCount.filter(a => a.postId == this.postId && a.studentId == +this.user.id)[0];
+    rect.reactionIndex = val;
+  }
+
+  private AddReaction(a: number, val: any) {
+    let rec = { id: a, studentId: +this.user.id, postId: this.postId, reactionIndex: val };
+    this.userReaction.push(rec);
+    this.reactionCount.push(rec);
+  }
+
+  private DeleteReaction() {
+    this.reactionSvc.DeleteReaction(+this.user.id, this.postId).subscribe(() => {
+      this.userReaction = [];
+      this.reactionCount = this.reactionCount.filter(a => a.postId != this.postId && a.studentId != +this.user.id);
+    }, err => console.log("error when remove react"));
   }
 
   toggleShow() {
