@@ -1,3 +1,4 @@
+import { ReactionService } from './data/services/reaction.service';
 import { CommentService } from './data/services/comment.service';
 import { TrainingService } from './data/services/training.service';
 import { JobService } from 'src/app/data/services/job.service';
@@ -28,7 +29,7 @@ import { LoaderComponent } from './presentation/common/components/loader/loader.
     PresentationModule,
     AppRoutingModule
   ],
-  providers: [AuthGuard, UserService, ProfileService, PostService, JobService,
+  providers: [AuthGuard, UserService, ProfileService, PostService, JobService,ReactionService,
     TrainingService, CommentService, [{
     provide: HTTP_INTERCEPTORS,
     useClass: HttpErrorInterceptor,

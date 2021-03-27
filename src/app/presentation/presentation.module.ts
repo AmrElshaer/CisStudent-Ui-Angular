@@ -39,6 +39,7 @@ import { NavbarComponent } from './common/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarLayoutComponent } from './sidebar/sidebar.component';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
+import { ReactionComponent } from './common/reaction/reaction.component';
 @NgModule({
   declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
@@ -46,7 +47,7 @@ import { UserProfilePageComponent } from './user-profile-page/user-profile-page.
     CreateTrainingComponent, TrainingDetailsComponent, AllTrainingComponent,
      AllJobsComponent, CreateJobComponent, JobDetailsComponent,MailPipe,
       StudentProfileComponent, AllFollowersComponent, ViewBlogComponent, ResponseToCommentComponent, DisplayCommentComponent, AdminLayoutComponent, FixedpluginComponent,
-      FooterComponent, NavbarComponent,SidebarLayoutComponent, UserProfilePageComponent]
+      FooterComponent, NavbarComponent,SidebarLayoutComponent, UserProfilePageComponent, ReactionComponent]
     ,
   imports: [
     CommonModule,

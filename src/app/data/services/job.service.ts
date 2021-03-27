@@ -14,8 +14,9 @@ export class JobService extends JobRepository {
     super();
 
   }
-  GetJobs(studentId: number): Observable<Job[]> {
-    const url = `${this.baseUrl}/Job/GetAllJob?studentId=${studentId}`;
+  GetJobs(studentId?: number): Observable<Job[]> {
+    const url =studentId? `${this.baseUrl}/Job/GetAllJob?studentId=${studentId}`:
+    `${this.baseUrl}/Job/GetAllJob`;
     return this.http.get<Job[]>(url, this.options);
   }
   UpSrtJob(job: Job): Observable<number> {

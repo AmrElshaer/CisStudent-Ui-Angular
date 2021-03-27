@@ -14,8 +14,9 @@ export class TrainingService extends TrainingRepository {
     super();
 
   }
-  GetTrainings(studentId: number): Observable<Training[]> {
-    const url = `${this.baseUrl}/Training/GetAllTraining?studentId=${studentId}`;
+  GetTrainings(studentId?: number): Observable<Training[]> {
+    const url=studentId?`${this.baseUrl}/Training/GetAllTraining?studentId=${studentId}`:
+    `${this.baseUrl}/Training/GetAllTraining`;
     return this.http.get<Training[]>(url, this.options);
   }
   UpSrtTraining(training: Training): Observable<number> {

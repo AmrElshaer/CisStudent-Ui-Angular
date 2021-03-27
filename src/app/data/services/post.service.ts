@@ -8,8 +8,7 @@ import { PostRepository } from 'src/app/core/repositories/post-repository';
   providedIn: 'root'
 })
 export class PostService extends PostRepository {
-
-
+ 
 
   constructor(private http: HttpClient) {
     super();

@@ -6,5 +6,5 @@ export abstract class  TrainingRepository extends BaseRepository {
   abstract UpSrtTraining(training: Training): Observable<number>;
   abstract GetTraining(trainingId: number): Observable<Training>;
   abstract DeleteTraining(trainingId: number): Observable<void>;
-  abstract GetTrainings(studentId: number): Observable<Training[]>;
+  abstract GetTrainings(studentId?:number): Observable<Training[]>;
 }

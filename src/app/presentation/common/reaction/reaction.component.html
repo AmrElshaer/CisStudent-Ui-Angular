@@ -1,0 +1,25 @@
+<div class="Reactionwrapper" (click)="toggleShow(true)" >
+  <div class="emojis" *ngIf="showEmojis">
+    <span *ngFor="let emoji of emojiList; index as i;">
+      <img [src]="emojiPath(emoji)" (click)="react(i)">
+    </span>
+  </div>
+  <span class="like" (click)="react(0)" [class.liked]="userReaction.length>0">
+    <i class="fa-2x far fa-thumbs-up"></i>
+  </span>
+
+  <span *ngIf="userReaction.length>0">
+    | You reacted <strong>{{ emojiList[userReaction[0].reactionIndex] }}</strong>
+  </span>
+
+  <div class="reactions">
+
+    <div *ngFor="let emoji of emojiList; index as i;" class="reaction-counts">
+
+      <span *ngIf="hasReactions(i)">
+        <img [src]="emojiPath(emoji)"> {{ GetReactsCount(i) }}
+      </span>
+
+    </div>
+  </div>
+</div>

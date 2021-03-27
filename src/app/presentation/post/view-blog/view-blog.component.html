@@ -7,10 +7,13 @@
       <figcaption>{{post.createDate|date}}</figcaption>
       <blockquote class="blogText">{{post.content}}</blockquote>
     </figure>
+    <app-reaction [postId]="post.id"></app-reaction>
   </div>
+
 
 </div>
 <div class="commentContainer">
+
   <app-display-comment [comments]="post.comments"></app-display-comment>
   <div class="addComment blogComment">
     <form role="form" [formGroup]='commentGroup' (ngSubmit)='Save(commentGroup.value)' style="margin: 30px;">
