@@ -1,4 +1,4 @@
-<div class="Reactionwrapper" (click)="toggleShow(true)" >
+<div class="Reactionwrapper" (click)="toggleShow()" >
   <div class="emojis" *ngIf="showEmojis">
     <span *ngFor="let emoji of emojiList; index as i;">
       <img [src]="emojiPath(emoji)" (click)="react(i)">

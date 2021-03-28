@@ -17,6 +17,8 @@ import { AuthGuard } from './presentation/common/guard/auth.guard';
 import { HttpErrorInterceptor } from './presentation/common/HttpErrorInterceptor';
 import { LoaderInterceptor } from './presentation/common/LoaderInterceptor';
 import { LoaderComponent } from './presentation/common/components/loader/loader.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent, LoaderComponent
@@ -27,7 +29,8 @@ import { LoaderComponent } from './presentation/common/components/loader/loader.
     CoreModule,
     DataModule,
     PresentationModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AuthGuard, UserService, ProfileService, PostService, JobService,ReactionService,
     TrainingService, CommentService, [{
