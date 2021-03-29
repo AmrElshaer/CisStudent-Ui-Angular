@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+<nav style="background-color: #ffff !important;" class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
   <div class="container-fluid">
     <div class="navbar-wrapper">
       <div class="navbar-toggle">
@@ -19,13 +19,20 @@
     <div class="collapse navbar-collapse justify-content-end" id="collapseExample" [ngbCollapse]="isCollapsed">
       <form>
         <div class="input-group no-border">
-          <input type="text" value="" class="form-control" placeholder="Search...">
+          <input (input)="SearchProfiles()" [formControl]="searchTitle" type="text" value="" class="form-control" placeholder="Search...">
           <div class="input-group-append">
-            <div class="input-group-text">
-              <i class="nc-icon nc-zoom-split"></i>
+            <div class="input-group-text" (click)="SearchProfiles()">
+              <i class="fas fa-search"></i>
             </div>
           </div>
         </div>
+        <div  style="position: absolute;color: white !important;" *ngIf="searchTitle.value" class="searchList">
+          <a style="color: white !important;" class="dropdown-item btn btn-light" [routerLink]="['/StudentProfile/',profile.cisStudentId]" *ngFor="let profile of profiles">
+
+              <img style="width: 50px;" [src]="profile.cisStudent.image"  class="img-circle img-no-padding img-responsive">
+              <span class="ml-2">{{profile.cisStudent.name}}</span>
+          </a>
+       </div>
       </form>
     </div>
   </div>

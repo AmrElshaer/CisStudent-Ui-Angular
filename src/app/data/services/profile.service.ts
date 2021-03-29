@@ -8,6 +8,10 @@ import { ProfileRepository } from 'src/app/core/repositories/profile-repository'
   providedIn: 'root'
 })
 export class ProfileService extends ProfileRepository {
+  GetProfiles(search: string): Observable<Profile[]> {
+    const url = `${this.baseUrl}/Profile/GetProfiles?text=${search}`;
+    return this.http.get<Profile[]>(url,this.options);
+  }
 
   constructor(private http: HttpClient) {
     super();
