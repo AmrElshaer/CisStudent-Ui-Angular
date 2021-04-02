@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="messaging">
+        <div class="inbox_msg">
+          <div class="inbox_people">
+            <div class="headind_srch">
+              <div class="recent_heading">
+                <h4>Followers</h4>
+              </div>
+            </div>
+            <div  class="inbox_chat">
+
+              <a *ngFor="let follower of followers" [routerLink]="['/Messages/'+follower.cisStudentSend.id]">
+                <div class="chat_list" [class.active_chat]="follower.cisStudentSendId==chatWith.cisStudentId" >
+                  <div class="chat_people">
+                    <div class="chat_img"> <img [src]="follower.cisStudentSend.image" [alt]="follower.cisStudentSend.name"> </div>
+                    <div class="chat_ib">
+                      <h5>{{follower.cisStudentSend.name}}</h5>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="mesgs">
+            <div #chatInbox class="msg_history">
+              <ng-container *ngFor="let mess of msgInboxArray">
+                       <ng-container *ngIf="mess.sendId!=SendUserId">
+                            <div class="incoming_msg">
+                              <div class="incoming_msg_img"> <img [src]="mess.sendSTD.image" [alt]="mess.sendSTD.name"> </div>
+                              <div class="received_msg">
+                                <div class="received_withd_msg">
+                                  <p>{{mess.content}}</p>
+                                  <span class="time_date"><app-moment [FromNoDatetime]="mess.createDate"></app-moment></span></div>
+                              </div>
+                            </div>
+                       </ng-container>
+                       <ng-container *ngIf="mess.sendId==SendUserId">
+                          <div class="outgoing_msg">
+                            <div class="sent_msg">
+                              <p>{{mess.content}}</p>
+                              <span class="time_date"><app-moment [FromNoDatetime]="mess.createDate"></app-moment></span> </div>
+                          </div>
+                       </ng-container>
+              </ng-container>
+
+
+
+            </div>
+            <form role="form" [formGroup]='chatGroup' (ngSubmit)='send(chatGroup.value)'>
+                <div class="type_msg">
+                  <div class="input_msg_write">
+                    <input type="text"   class="form-control"  formControlName="content"
+                    placeholder="Enter Message Content" required/>
+                    <button class="msg_send_btn" [disabled]="!chatGroup.valid" type="submit">
+                      <i class="far fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div></div>
+
+

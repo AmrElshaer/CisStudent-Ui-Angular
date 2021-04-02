@@ -40,14 +40,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarLayoutComponent } from './sidebar/sidebar.component';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
 import { ReactionComponent } from './common/reaction/reaction.component';
+import { ChatComponent } from './chat/chat.component';
+import { ChatRoutingModule } from './chat/chat-rounting.module';
+import { MomentComponent } from './common/components/moment/moment.component';
 @NgModule({
   declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
     HeaderComponent, SidebarComponent, CreatePostComponent, AllPostsComponent, PostDetailsComponent,
     CreateTrainingComponent, TrainingDetailsComponent, AllTrainingComponent,
      AllJobsComponent, CreateJobComponent, JobDetailsComponent,MailPipe,
-      StudentProfileComponent, AllFollowersComponent, ViewBlogComponent, ResponseToCommentComponent, DisplayCommentComponent, AdminLayoutComponent, FixedpluginComponent,
-      FooterComponent, NavbarComponent,SidebarLayoutComponent, UserProfilePageComponent, ReactionComponent]
+      StudentProfileComponent, AllFollowersComponent, ViewBlogComponent,
+       ResponseToCommentComponent, DisplayCommentComponent, AdminLayoutComponent, FixedpluginComponent,
+      FooterComponent, NavbarComponent,SidebarLayoutComponent, UserProfilePageComponent, ReactionComponent, ChatComponent, MomentComponent]
     ,
   imports: [
     CommonModule,
@@ -57,6 +61,6 @@ import { ReactionComponent } from './common/reaction/reaction.component';
     NgbModule
   ],
   exports: [UserRoutingModule, HomeRoutingModule, ProfileRoutingModule, HeaderComponent,
-                 PostRoutingModule, TrainingRoutingModule, JobRoutingModule,FollowerRoutingModule]
+                 PostRoutingModule, TrainingRoutingModule, JobRoutingModule,FollowerRoutingModule,ChatRoutingModule]
 })
 export class PresentationModule { }
