@@ -33,7 +33,7 @@
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",
     "ngx-emoji-picker": "0.0.2",
-    "ngx-toastr": "^13.2.1",
+    "ngx-toastr": "^11.3.3",
     "npm": "^6.10.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",

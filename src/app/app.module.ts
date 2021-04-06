@@ -1,3 +1,4 @@
+import { from } from 'rxjs';
 import { ReactionService } from './data/services/reaction.service';
 import { CommentService } from './data/services/comment.service';
 import { TrainingService } from './data/services/training.service';

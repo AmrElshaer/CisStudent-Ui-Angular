@@ -9,12 +9,13 @@
             </div>
             <div  class="inbox_chat">
 
-              <a *ngFor="let follower of followers" [routerLink]="['/Messages/'+follower.cisStudentSend.id]">
+              <a (click)="SeeFollower()" *ngFor="let follower of followers" [routerLink]="['/Messages/'+follower.cisStudentSend.id]">
                 <div class="chat_list" [class.active_chat]="follower.cisStudentSendId==chatWith.cisStudentId" >
                   <div class="chat_people">
                     <div class="chat_img"> <img [src]="follower.cisStudentSend.image" [alt]="follower.cisStudentSend.name"> </div>
                     <div class="chat_ib">
                       <h5>{{follower.cisStudentSend.name}}</h5>
+                      <app-miss-message [UserId]="follower.cisStudentSendId"></app-miss-message>
                     </div>
                   </div>
                 </div>
@@ -22,7 +23,14 @@
             </div>
           </div>
           <div class="mesgs">
+            <div style="text-align: center;">
+                <div *ngIf="ShowLoader" class="spinner-border  text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+
             <div #chatInbox class="msg_history">
+
               <ng-container *ngFor="let mess of msgInboxArray">
                        <ng-container *ngIf="mess.sendId!=SendUserId">
                             <div class="incoming_msg">
@@ -42,14 +50,11 @@
                           </div>
                        </ng-container>
               </ng-container>
-
-
-
             </div>
             <form role="form" [formGroup]='chatGroup' (ngSubmit)='send(chatGroup.value)'>
                 <div class="type_msg">
                   <div class="input_msg_write">
-                    <input type="text"   class="form-control"  formControlName="content"
+                    <input (focus)="scrollToBottom()" type="text"   class="form-control"  formControlName="content"
                     placeholder="Enter Message Content" required/>
                     <button class="msg_send_btn" [disabled]="!chatGroup.valid" type="submit">
                       <i class="far fa-paper-plane"></i>

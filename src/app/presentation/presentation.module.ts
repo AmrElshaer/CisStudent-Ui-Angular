@@ -1,3 +1,5 @@
+import { from } from 'rxjs';
+
 import { FollowerRoutingModule } from './Followers/follower/follower-routing.module';
 import { MailPipe } from './common/pipes/mail.pipe';
 import { JobRoutingModule } from './job/job-routing.module';
@@ -43,6 +45,10 @@ import { ReactionComponent } from './common/reaction/reaction.component';
 import { ChatComponent } from './chat/chat.component';
 import { ChatRoutingModule } from './chat/chat-rounting.module';
 import { MomentComponent } from './common/components/moment/moment.component';
+import { MissMessageComponent } from './miss-message/miss-message.component';
+import { MessageNotificationComponent } from './message-notification/message-notification.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
 @NgModule({
   declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
@@ -51,14 +57,18 @@ import { MomentComponent } from './common/components/moment/moment.component';
      AllJobsComponent, CreateJobComponent, JobDetailsComponent,MailPipe,
       StudentProfileComponent, AllFollowersComponent, ViewBlogComponent,
        ResponseToCommentComponent, DisplayCommentComponent, AdminLayoutComponent, FixedpluginComponent,
-      FooterComponent, NavbarComponent,SidebarLayoutComponent, UserProfilePageComponent, ReactionComponent, ChatComponent, MomentComponent]
+      FooterComponent, NavbarComponent,SidebarLayoutComponent, UserProfilePageComponent,
+       ReactionComponent, ChatComponent, MomentComponent,MissMessageComponent, MessageNotificationComponent]
     ,
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+
   ],
   exports: [UserRoutingModule, HomeRoutingModule, ProfileRoutingModule, HeaderComponent,
                  PostRoutingModule, TrainingRoutingModule, JobRoutingModule,FollowerRoutingModule,ChatRoutingModule]
