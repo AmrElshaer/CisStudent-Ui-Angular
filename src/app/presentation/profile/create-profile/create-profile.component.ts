@@ -21,7 +21,7 @@ export class CreateProfileComponent implements OnInit {
     this.InitForm();
     this.studentId = +this.userService.getUser().id;
     this.profileService.GetProfile(this.studentId).subscribe(
-     data => {this.AppendProfile(data); console.log(this.profileGroup.value);});
+     data => {this.AppendProfile(data);});
   }
   private InitForm() {
     this.profileGroup = this.formBuilder.group({
@@ -32,12 +32,14 @@ export class CreateProfileComponent implements OnInit {
   }
 
   AppendProfile(profile: Profile): void {
+
     this.profileId = profile.id;
-    this.profileGroup.setValue({
+    this.profileGroup.patchValue({
       colleage:profile.colleage, university: profile.university,city:profile.city,
       age: profile.age, experience: profile.experience, language: profile.language, programing_Language: profile.programing_Language, carear: profile.carear, appreciation: profile.appreciation,
       company: profile.company, addition: profile.addition, cisStudentId: profile.cisStudentId, kind: profile.kind,id:profile.id
     });
+
      console.log(this.profileGroup.value);
   }
   Save(profile: Profile) {

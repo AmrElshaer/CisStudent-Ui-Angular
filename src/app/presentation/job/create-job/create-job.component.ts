@@ -18,6 +18,7 @@ export class CreateJobComponent implements OnInit {
   studentId: number;
   errors: string[];
   jobId: number|null;
+  froalaObject:Object;
   constructor(private router: Router, private formBuilder: FormBuilder,
               private userService: UserService, private jobService: JobService, private activeRoute: ActivatedRoute) {
 
@@ -32,6 +33,9 @@ export class CreateJobComponent implements OnInit {
     this.UpdateBLog();
   }
   private InitBlog() {
+    this.froalaObject ={ charCounterCount: false, placeholderText: 'Enter your Content', events :
+     { 'froalaEditor.contentChanged' : (e, editor) => { this.jobGroup.patchValue({content: editor.html.get()})
+    } } };
     this.jobGroup = this.formBuilder.group({
       technology: [''],
       place: [''],

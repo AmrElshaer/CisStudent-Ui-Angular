@@ -5,7 +5,7 @@
       <h1 class="blogTitle">{{post.title}}</h1>
       <img [src]="post.cisStudent.image" class="profileImage">
       <figcaption>{{post.createDate|date}}</figcaption>
-      <blockquote class="blogText">{{post.content}}</blockquote>
+      <blockquote class="blogText" [froalaView]="post.content"></blockquote>
     </figure>
     <app-reaction [postId]="post.id"></app-reaction>
   </div>

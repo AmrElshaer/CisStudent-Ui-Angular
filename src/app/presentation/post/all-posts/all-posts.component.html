@@ -25,9 +25,8 @@
         <h3 class="text-center">
           {{post.title}}
         </h3>
-        <p>
-          {{post.content}}
-        </p>
+        <div [froalaView]="post.content">
+        </div>
       </div>
       <div class="card-footer">
         <hr>

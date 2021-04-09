@@ -14,8 +14,7 @@
            {{profile?.colleage}}
           </p>
         </div>
-        <p class="description text-center">
-          {{profile?.addition}}
+        <p class="description text-center" [froalaView]="profile?.addition">
         </p>
       </div>
       <div class="card-footer">
@@ -159,8 +158,7 @@
           <h3 class="text-center">
             {{post.title}}
           </h3>
-          <p>
-            {{post.content}}
+          <p [froalaView]="post.content">
           </p>
         </div>
         <div class="card-footer">

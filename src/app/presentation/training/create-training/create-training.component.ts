@@ -16,6 +16,7 @@ export class CreateTrainingComponent implements OnInit {
   studentId: number;
   errors: string[];
   trainingId: number|null;
+  froalaObject:Object;
   constructor(private router: Router, private formBuilder: FormBuilder,
               private userService: UserService, private trainingService: TrainingService, private activeRoute: ActivatedRoute) {
 
@@ -30,6 +31,9 @@ export class CreateTrainingComponent implements OnInit {
     this.UpdateBLog();
   }
   private InitBlog() {
+    this.froalaObject ={ charCounterCount: false, placeholderText: 'Enter your Content', events :
+     { 'froalaEditor.contentChanged' : (e, editor) => { this.trainingGroup.patchValue({content: editor.html.get()})
+    } } };
     this.trainingGroup = this.formBuilder.group({
       technology: [''],
       place: [''],

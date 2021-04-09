@@ -49,6 +49,7 @@ import { MissMessageComponent } from './miss-message/miss-message.component';
 import { MessageNotificationComponent } from './message-notification/message-notification.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 @NgModule({
   declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
@@ -67,7 +68,8 @@ import {ToastrModule} from 'ngx-toastr';
     RouterModule,
     NgbModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FroalaEditorModule.forRoot(),FroalaViewModule.forRoot()
 
   ],
   exports: [UserRoutingModule, HomeRoutingModule, ProfileRoutingModule, HeaderComponent,

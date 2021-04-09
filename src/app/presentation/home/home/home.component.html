@@ -19,8 +19,7 @@
           <h3 class="text-center">
             {{job.place}}
           </h3>
-          <p>
-            {{job.content}}
+          <p [froalaView]="job.content">
           </p>
           <a routerLink="#" *ngFor="let tech of job?.technology.split(' ')"> {{tech}} </a>
           <p><a [href]="job.contactUs|mailPipe">Contact US</a></p>
@@ -47,7 +46,7 @@
           <h3 class="text-center">
             {{post.title}}
           </h3>
-          <p>{{post.content?.substr(0,50)}}</p>
+          <p [froalaView]="post.content"></p>
         </div>
         <div class="card-footer">
           <hr>
@@ -86,8 +85,7 @@
           <h3 class="text-center">
             {{training.place}}
           </h3>
-          <p>
-            {{training.content}}
+          <p [froalaView]="training.content">
           </p>
           <a routerLink="#" *ngFor="let tech of training?.technology.split(' ')"> {{tech}} </a>
         </div>
