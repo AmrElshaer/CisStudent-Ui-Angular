@@ -15,6 +15,7 @@ export class RegisterUserComponent implements OnInit {
   errors: string[];
   successfulSave: boolean;
   imageSrc: string;
+  showConfirmMessage:boolean=false;
   constructor(private router: Router, private formbuilder: FormBuilder, private userSerivie: UserService) {
   }
   ngOnInit() {
@@ -42,7 +43,7 @@ export class RegisterUserComponent implements OnInit {
   }
   Save(user) {
     this.userSerivie.register(user.email, user.password, user.name, this.imageSrc).subscribe(
-      () => this.router.navigate(['signIn']),
+      () => this.showConfirmMessage=true,
       err => this.errors = ValidationHelper.GetErrors(err)
 
     );

@@ -17,7 +17,6 @@ export class ChatService extends ChatRepository {
     super();
 
     this.connection.onclose(async () => {
-      console.log('Closed Connection');
       this.RemoveFromGroup();
       await this.start();
     });
@@ -40,7 +39,7 @@ export class ChatService extends ChatRepository {
   public  start() {
     this.connection
     .start()
-    .then(() => {console.log('Connection started'); this.JoinInGroup(); })
+    .then(() => {this.JoinInGroup(); })
     .catch(err => console.log('Error while starting connection: ' + err));
   }
 
@@ -51,7 +50,10 @@ export class ChatService extends ChatRepository {
     this.connection.invoke('JoinToGroup', this.userService.getUser().name).catch(err => console.log('Canot join'));
   }
   public RemoveFromGroup() {
-    this.connection.invoke('RemoveFromGroup', this.userService.getUser().name).catch(err => console.log('Canot Remove'));
+    if(this.userService.getUser()){
+      this.connection.invoke('RemoveFromGroup', this.userService.getUser().name).catch(err => console.log('Canot Remove'));
+    }
+
   }
   /* ****************************** Public Mehods **************************************** */
 

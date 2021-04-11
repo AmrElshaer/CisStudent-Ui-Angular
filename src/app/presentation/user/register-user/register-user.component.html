@@ -12,6 +12,10 @@
                 </div>
               </div>
               <div class="card-body">
+                <div *ngIf="showConfirmMessage" class="alert alert-success" role="alert">
+                  Check your email to confirm.
+
+              </div>
                 <form [formGroup]='userRegister' (ngSubmit)='Save(userRegister.value)'>
                   <app-error [errors]="errors"></app-error>
 

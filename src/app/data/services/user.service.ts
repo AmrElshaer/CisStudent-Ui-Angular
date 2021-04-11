@@ -16,10 +16,13 @@ export class UserService  extends UserRepository  {
   }
   getUser(): User {
     const token = localStorage.getItem(this.authKey);
-    const decoded: User = jwt_decode(token);
-    const image = localStorage.getItem('image');
-    decoded.image = image;
-    return decoded;
+    if(token){
+      const decoded: User = jwt_decode(token);
+      const image = localStorage.getItem('image');
+      decoded.image = image;
+      return decoded;
+    }
+
   }
   register(email: string, password: string, name: string, image: string): Observable<void> {
     const url = `${this.baseUrl}/Account/Register`;
@@ -27,7 +30,8 @@ export class UserService  extends UserRepository  {
       Email: email,
       Password: password,
       Name: name,
-      Image: image
+      Image: image,
+      ClientUrl:`${window.location.origin}/confirmEmail`
     };
     return this.http.post<void>(url, body);
 
@@ -39,6 +43,14 @@ export class UserService  extends UserRepository  {
       Password: password,
     };
     return this.http.post<{token, image}>(url, body);
+  }
+  ConfirmEmail(email: string, token: string): Observable<void> {
+    const url = `${this.baseUrl}/Account/EmailConfirmation`;
+    const body = {
+      Email: email,
+      Token: token,
+    };
+    return this.http.post<void>(url, body);
   }
   isLoggedIn(): boolean {
     const token = localStorage.getItem(this.authKey);

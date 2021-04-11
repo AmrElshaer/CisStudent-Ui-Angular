@@ -1,3 +1,4 @@
+import { ChatService } from 'src/app/data/services/chat.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/domain/user';
@@ -25,7 +26,7 @@ export class SidebarLayoutComponent implements OnInit {
   user: User;
   Authorize = false;
   public menuItems: any[];
-  constructor(private router: Router, private userSerivce: UserService) {
+  constructor(private router: Router, private userSerivce: UserService,private chatService:ChatService) {
   }
   ngOnInit() {
     if (this.userSerivce.isLoggedIn()) {
@@ -35,6 +36,7 @@ export class SidebarLayoutComponent implements OnInit {
       this.menuItems = ROUTES.filter(menuItem => menuItem);
   }
   logOut() {
+    this.chatService.RemoveFromGroup();
     localStorage.clear();
     this.router.navigate(['signIn']);
   }

@@ -1,3 +1,4 @@
+import { EmailConfirmationComponent } from './user/email-confirmation/email-confirmation.component';
 import { from } from 'rxjs';
 
 import { FollowerRoutingModule } from './Followers/follower/follower-routing.module';
@@ -59,7 +60,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
       StudentProfileComponent, AllFollowersComponent, ViewBlogComponent,
        ResponseToCommentComponent, DisplayCommentComponent, AdminLayoutComponent, FixedpluginComponent,
       FooterComponent, NavbarComponent,SidebarLayoutComponent, UserProfilePageComponent,
-       ReactionComponent, ChatComponent, MomentComponent,MissMessageComponent, MessageNotificationComponent]
+       ReactionComponent, ChatComponent, MomentComponent,MissMessageComponent, MessageNotificationComponent,EmailConfirmationComponent]
     ,
   imports: [
     CommonModule,

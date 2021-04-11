@@ -20,6 +20,7 @@ import { LoaderInterceptor } from './presentation/common/LoaderInterceptor';
 import { LoaderComponent } from './presentation/common/components/loader/loader.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { EncodeHttpParamsInterceptor } from './presentation/common/EncodeHttpParamsInterceptor';
 @NgModule({
   declarations: [
     AppComponent, LoaderComponent
@@ -42,6 +43,10 @@ import { environment } from '../environments/environment';
     provide: HTTP_INTERCEPTORS,
     useClass: LoaderInterceptor,
     multi: true
+  },{
+    provide: HTTP_INTERCEPTORS,
+    useClass: EncodeHttpParamsInterceptor,
+    multi: true,
   }]],
   bootstrap: [AppComponent]
 })
