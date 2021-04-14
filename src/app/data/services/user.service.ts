@@ -52,6 +52,23 @@ export class UserService  extends UserRepository  {
     };
     return this.http.post<void>(url, body);
   }
+  ForgetPassword(email: string): Observable<void> {
+    const url = `${this.baseUrl}/Account/ForgetPassword`;
+    const body = {
+      Email: email,
+      ClientURI:`${window.location.origin}/ChangePassword`
+    };
+    return this.http.post<void>(url, body);
+  }
+  ChangePassword(email: string,token:string,newPassword:string): Observable<void> {
+    const url = `${this.baseUrl}/Account/ChangePassword`;
+    const body = {
+      Email: email,
+      Token:token,
+      NewPassword:newPassword
+    };
+    return this.http.post<void>(url, body);
+  }
   isLoggedIn(): boolean {
     const token = localStorage.getItem(this.authKey);
     if (token) {return true; }

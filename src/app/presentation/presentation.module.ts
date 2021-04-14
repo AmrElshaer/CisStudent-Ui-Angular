@@ -1,6 +1,4 @@
 import { EmailConfirmationComponent } from './user/email-confirmation/email-confirmation.component';
-import { from } from 'rxjs';
-
 import { FollowerRoutingModule } from './Followers/follower/follower-routing.module';
 import { MailPipe } from './common/pipes/mail.pipe';
 import { JobRoutingModule } from './job/job-routing.module';
@@ -51,6 +49,8 @@ import { MessageNotificationComponent } from './message-notification/message-not
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { ResetPasswordComponent } from './user/reset-password/reset-password.component';
+import { ChangePasswordComponent } from './user/change-password/change-password.component';
 @NgModule({
   declarations: [RegisterUserComponent, LoginUserComponent, HomeComponent ,
     ErrorComponent, CreateProfileComponent, ProfileDetailsComponent,
@@ -60,7 +60,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
       StudentProfileComponent, AllFollowersComponent, ViewBlogComponent,
        ResponseToCommentComponent, DisplayCommentComponent, AdminLayoutComponent, FixedpluginComponent,
       FooterComponent, NavbarComponent,SidebarLayoutComponent, UserProfilePageComponent,
-       ReactionComponent, ChatComponent, MomentComponent,MissMessageComponent, MessageNotificationComponent,EmailConfirmationComponent]
+       ReactionComponent, ChatComponent, MomentComponent,MissMessageComponent,
+        MessageNotificationComponent,EmailConfirmationComponent,ResetPasswordComponent,ChangePasswordComponent]
     ,
   imports: [
     CommonModule,
