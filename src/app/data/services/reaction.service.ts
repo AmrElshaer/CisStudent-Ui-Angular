@@ -1,5 +1,5 @@
 import { Reactions } from 'src/app/core/domain/reaction';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ReactionRepository } from 'src/app/core/repositories/reaction-repository';
@@ -13,7 +13,8 @@ export class ReactionService extends ReactionRepository{
   }
   emojiList = ['like', 'love', 'wow', 'haha', 'sad', 'angry']
   DeleteReaction(userId: any, postId: any): Observable<void> {
-    const url = `${this.baseUrl}/Reactions/DeleteReaction?postId=${postId}&studentId=${userId}`;
+    this.options['params']=new HttpParams().set('postId',postId).set('studentId',userId);
+    const url = `${this.baseUrl}/Reactions/DeleteReaction`;
     return this.http.delete<void>(url, this.options);
   }
   GetReactions(postId: number): Observable<Reactions[]> {

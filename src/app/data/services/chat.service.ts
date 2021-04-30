@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { ChatRepository } from 'src/app/core/repositories/chat-repository';
 import * as signalR from '@microsoft/signalr';          // import signalR
 import { Observable, Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,8 +29,9 @@ export class ChatService extends ChatRepository {
                                          .build();
    readonly POST_URL = `${this.baseUrl}/Chat/SendRequest`;
   private sharedObj = new Subject<Message>();
-  GetMessages(sendSTDId: number, recieveSTDId: number): Observable<Message[]> {
-    const url = `${this.baseUrl}/Chat/GetMessages?fromSTD=${sendSTDId}&toSTD=${recieveSTDId}`;
+  GetMessages(sendSTDId, recieveSTDId): Observable<Message[]> {
+    this.options['params']=new HttpParams().set('fromSTD',sendSTDId).set('toSTD',recieveSTDId);
+    const url = `${this.baseUrl}/Chat/GetMessages`;
     return this.http.get<Message[]>(url, this.options);
   }
 

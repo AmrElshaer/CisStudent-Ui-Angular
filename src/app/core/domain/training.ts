@@ -6,5 +6,6 @@ export interface Training {
     createDate: Date ;
     content: string;
     cisStudentId: number;
+    contactUs:string;
    cisStudent: User ;
 }

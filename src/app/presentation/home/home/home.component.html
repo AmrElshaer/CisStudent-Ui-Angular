@@ -47,6 +47,7 @@
             {{post.title}}
           </h3>
           <p [froalaView]="post.content"></p>
+
         </div>
         <div class="card-footer">
           <hr>
@@ -88,6 +89,7 @@
           <p [froalaView]="training.content">
           </p>
           <a routerLink="#" *ngFor="let tech of training?.technology.split(' ')"> {{tech}} </a>
+          <p><a [href]="training.contactUs|mailPipe">Contact US</a></p>
         </div>
 
       </div>

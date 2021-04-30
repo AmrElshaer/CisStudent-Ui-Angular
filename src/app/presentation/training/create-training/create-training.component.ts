@@ -37,6 +37,7 @@ export class CreateTrainingComponent implements OnInit {
     this.trainingGroup = this.formBuilder.group({
       technology: [''],
       place: [''],
+      contactUs:[''],
       content: ['', Validators.required],
 
     });

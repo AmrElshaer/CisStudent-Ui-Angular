@@ -47,7 +47,7 @@ export class ChatComponent implements OnInit{
          }
          a.forEach(m => this.addToInbox(m));
          this.scrollToBottom();
-        });
+        },err=>this.ShowLoader = false);
        this.profileSerive.GetProfile(chatWithId)
        .subscribe(p => this.chatWith = p);
     });
