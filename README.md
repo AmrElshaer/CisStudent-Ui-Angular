@@ -1,6 +1,22 @@
 # CisStudent
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
+# Angular
+
+* Modular
+* Dependency Injection
+* Services
+* Reactive Forms
+* Validation
+* @Input & @Output Decorators
+* Http Client Requests
+* OnInit & OnDestroy (Lifecycle Hooks)
+* Rxjs Observables
+* Subscription (Subscribe & Unsubscribe)
+* Routing
+* Http Interceptors
+* Toastr
+* Bootstrap 4
 
 ## Development server
 
